@@ -1,3 +1,22 @@
-﻿/.vscode/
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env / credentials (do not commit)
+.env
+.env.*
+.firebase/
+.wrangler/
+
+# Builds / caches
+dist/
+build/
+coverage/
+.cache/
+
+# Node (if tooling is added later)
+node_modules//.vscode/
 Thumbs.db
 .DS_Store

@@ -1,0 +1,14 @@
+title = "Gitleaks Config"
+
+[allowlist]
+description = "Allowlist Firebase public Web API keys and this file path to reduce false positives."
+paths = [
+  # This file is expected to contain a Firebase Web API key (public by design)
+  '''firebase-config\.js'''
+]
+
+# You can also allowlist a specific key if needed by adding it to the regexes array.
+# [allowlist]
+# regexes = [
+#   '''AIza[0-9A-Za-z\-_]{35}'''
+# ]

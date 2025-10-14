@@ -1,5 +1,14 @@
-// Firebase client configuration (provided)
-// Note: Client apiKey is not a secret; it's safe in public web apps.
+// Firebase client configuration (public by design)
+// IMPORTANT: The Firebase Web API key (AIza...) is NOT a secret. It's an identifier for your project.
+// Secure your app via Firestore/Storage security rules and by restricting this key to your domains.
+// How to restrict the key:
+//   Google Cloud Console → APIs & Services → Credentials → select this Web API key →
+//   Application restrictions: HTTP referrers (web sites) → add:
+//     - http://localhost:5500/*
+//     - http://127.0.0.1:5500/*
+//     - https://*.pages.dev/*
+//     - https://YOURDOMAIN.com/* (and www if used)
+//   API restrictions: usually leave unrestricted for Firebase SDKs to avoid breaking features.
 window.FIREBASE_ENABLED = true;
 window.firebaseConfig = {
   apiKey: "AIzaSyAXwuG5uHH3fV79Z8DBAQeQCUpapotHTfw",
