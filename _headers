@@ -24,14 +24,19 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
 
+# Temporary homepage (Coming Soon) should not be indexed or cached
+/
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+/index.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
 # Coming soon page should not be cached or indexed
 /coming-soon
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
 /coming-soon/
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-store
-/coming-soon.html
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
 
