@@ -6,5 +6,6 @@
 # Keep admin accessible
 /admin.html	/admin.html	200
 
-# Everything else to Coming Soon placeholder
-/*	/coming-soon.html	200
+# Root-only Coming Soon: avoid catch-all to prevent redirect loops
+/	/coming-soon.html	200
+/index.html	/coming-soon.html	200
