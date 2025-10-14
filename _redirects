@@ -1,4 +1,6 @@
-# Allow the Coming Soon page to load without being rewritten again
+# Allow the Coming Soon page paths to load without being rewritten again
+/coming-soon	/coming-soon.html	200
+/coming-soon/	/coming-soon.html	200
 /coming-soon.html	/coming-soon.html	200
 
 # Keep admin accessible

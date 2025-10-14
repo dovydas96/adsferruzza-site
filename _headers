@@ -25,6 +25,12 @@
   Cache-Control: no-store
 
 # Coming soon page should not be cached or indexed
+/coming-soon
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+/coming-soon/
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
 /coming-soon.html
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
