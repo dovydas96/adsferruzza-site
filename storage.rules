@@ -1,0 +1,30 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email == 'adpasticceriasferruzza@gmail.com';
+    }
+
+    // Publicly readable content paths
+    match /gallery/{allPaths=**} {
+      allow read: if true;            // public gallery images
+      allow write: if isAdmin();      // only admin can upload/delete
+    }
+
+    match /blog-covers/{allPaths=**} {
+      allow read: if true;            // blog cover images
+      allow write: if isAdmin();
+    }
+
+    match /featured/{allPaths=**} {
+      allow read: if true;            // featured product images
+      allow write: if isAdmin();
+    }
+
+    // Default: deny other paths
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

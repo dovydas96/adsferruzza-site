@@ -1,0 +1,40 @@
+name: Update Instagram Media
+
+on:
+  schedule:
+    # Daily at 02:30 UTC
+    - cron: '30 2 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Instagram media
+        shell: pwsh
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: |
+          if (-not $env:IG_ACCESS_TOKEN) { throw "Missing IG_ACCESS_TOKEN secret" }
+          if (-not $env:IG_USER_ID) { throw "Missing IG_USER_ID secret" }
+          ./scripts/fetch-instagram-media.ps1 -AccessToken $env:IG_ACCESS_TOKEN -UserId $env:IG_USER_ID -OutputPath data/instagram.json -Limit 12
+
+      - name: Commit changes if any
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/instagram.json
+            git commit -m "chore(instagram): update media feed [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi

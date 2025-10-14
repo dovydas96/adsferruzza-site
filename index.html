@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AD Sferruzza Pasticceria | Pasticceria artigianale a Cefalù</title>
+  <meta name="description" content="Pasticceria artigianale a Cefalù: dolci siciliani, cannoli, arancini, pane fresco e specialità fatte in casa. Ordina o vieni a trovarci in Via Antonello da Messina 34.">
+  <link rel="canonical" href="/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AD Sferruzza Pasticceria | Pasticceria artigianale a Cefalù">
+  <meta property="og:description" content="Dolci siciliani e specialità artigianali a Cefalù. Scopri i prodotti in evidenza e le recensioni.">
+  <meta property="og:url" content="/">
+  <meta property="og:image" content="/images/family-hero.jpg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AD Sferruzza Pasticceria">
+  <meta name="twitter:description" content="Pasticceria artigianale a Cefalù: dolci siciliani e specialità fresche ogni giorno.">
+  <meta name="twitter:image" content="/images/family-hero.jpg">
+  <meta property="og:site_name" content="AD Sferruzza Pasticceria">
+  <link rel="preload" as="image" href="/images/family-hero.jpg" imagesrcset="/images/family-hero.jpg 1200w" imagesizes="100vw">
+  <meta name="theme-color" content="#181818">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "AD Sferruzza Pasticceria",
+    "image": [
+      "/images/family-hero.jpg"
+    ],
+    "@id": "",
+    "url": "/",
+    "telephone": "+39 0921 996959",
+    "servesCuisine": ["Sicilian", "Italian", "Bakery"],
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Antonello da Messina, 34",
+      "addressLocality": "Cefalù",
+      "addressRegion": "PA",
+      "postalCode": "90015",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.031318,
+      "longitude": 14.0171215
+    },
+    "sameAs": [
+      "https://www.instagram.com/ad_sferruzza_pasticceria/",
+      "https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/",
+      "https://www.tiktok.com/@ad_sferruzza_pasticceria"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": 25
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"07:00","closes":"15:00"}
+    ]
+  }
+  </script>
+  <!-- Structured Data: OfferCatalog for featured products -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "name": "Prodotti in evidenza",
+    "itemListElement": [
+      {
+        "@type": "Product",
+        "name": "Ducitti",
+        "category": "Pastry",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "20.00",
+          "priceSpecification": {"@type":"UnitPriceSpecification","price":20,"priceCurrency":"EUR","unitText":"kg"},
+          "availability": "https://schema.org/InStoreOnly"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Cannoli (11 cialde con 1kg di ricotta)",
+        "category": "Pastry",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "28.00",
+          "availability": "https://schema.org/InStoreOnly"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Arancini (9 pezzi)",
+        "category": "Rosticceria",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "28.00",
+          "availability": "https://schema.org/InStoreOnly"
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Optional: Firebase for admin-powered content. Fill firebase-config.js to enable. -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js" defer></script>
+  <script src="firebase-config.js" defer></script>
+  <script src="firebase-init.js" defer></script>
+  <script src="gallery.js" defer></script>
+  <script src="featured.js" defer></script>
+  <script src="reviews.js" defer></script>
+</head>
+<body>
+  <div class="confetti-bg"></div>
+  <header>
+  <a href="/" class="logo" aria-label="AD Sferruzza Pasticceria">
+    <img src="images/logo.png" alt="AD Sferruzza Pasticceria" width="300" height="72">
+  </a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <nav id="primary-nav">
+  <a href="#home" class="nav-link">Home</a>
+  <a href="#products" class="nav-link">Prodotti</a>
+  <a href="#about" class="nav-link">La Nostra Storia</a>
+  <a href="#gallery" class="nav-link">Galleria</a>
+  <a href="#contact" class="nav-link">Contatti</a>
+  <a href="blog.html" class="nav-link">Blog</a>
+      <span class="nav-underline"></span>
+    </nav>
+    <div class="social-links">
+      <a class="icon" href="https://www.instagram.com/ad_sferruzza_pasticceria/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+        </svg>
+        <span class="sr-only">Instagram</span>
+      </a>
+      <a class="icon" href="https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.14 8.44 9.93v-7.02H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34v7.02C18.34 21.21 22 17.07 22 12.07z"/>
+        </svg>
+        <span class="sr-only">Facebook</span>
+      </a>
+      <a class="icon" href="https://www.tiktok.com/@ad_sferruzza_pasticceria" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12.5 2h3.2a5.7 5.7 0 0 0 1.7 3.5 5.8 5.8 0 0 0 3.6 1.3v3.3a9 9 0 0 1-5.3-1.8v6.8a6.2 6.2 0 1 1-6.2-6.2c.5 0 1 .1 1.5.2v3.4a2.9 2.9 0 1 0 2.1 2.8V2z"/>
+        </svg>
+        <span class="sr-only">TikTok</span>
+      </a>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="hero fade-in-section">
+    <div class="parallax-hero">
+  <img src="images/family-hero.jpg" alt="La famiglia Sferruzza davanti alla pasticceria" class="hero-img" fetchpriority="high" decoding="async">
+        <div class="hero-overlay"></div>
+      </div>
+  <h1>Benvenuti da AD Sferruzza Pasticceria</h1>
+  <p>Sapori autentici siciliani, freschi ogni giorno.</p>
+    </section>
+  <section id="products" class="products fade-in-section">
+  <h2><span class="heading-underline">Prodotti in Evidenza</span></h2>
+  <div class="section-divider gold-gradient-divider animate-divider"></div>
+      <div id="featuredProducts" class="product-list" data-fallback="true">
+        <div class="product">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Ducitti" loading="lazy" decoding="async" width="320" height="200" srcset="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=320&q=70 320w, https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=640&q=70 640w" sizes="(max-width: 900px) 90vw, 320px">
+          <h3>Ducitti</h3>
+          <p>Pasta di mandorle, 20€ al kg</p>
+        </div>
+        <div class="product">
+          <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Cannoli" loading="lazy" decoding="async" width="320" height="200" srcset="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=320&q=70 320w, https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=640&q=70 640w" sizes="(max-width: 900px) 90vw, 320px">
+          <h3>Cannoli</h3>
+          <p>11 cialde con 1kg di ricotta, 28€</p>
+        </div>
+        <div class="product">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Arancini" loading="lazy" decoding="async" width="320" height="200" srcset="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=320&q=70 320w, https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=640&q=70 640w" sizes="(max-width: 900px) 90vw, 320px">
+          <h3>Arancini</h3>
+          <p>9 pezzi, 28€</p>
+        </div>
+      </div>
+    </section>
+  <section id="about" class="about fade-in-section">
+  <h2><span class="heading-underline">La Nostra Storia</span></h2>
+  <div class="section-divider gold-gradient-divider animate-divider"></div>
+  <p><span class="accent-script">Dal 1988</span>, la nostra famiglia porta il sapore della Sicilia sulla tua tavola. Ogni mattina sforniamo pane fresco, dolci e specialità salate seguendo le ricette tradizionali e utilizzando solo ingredienti di alta qualità.</p>
+    </section>
+  <section id="gallery" class="gallery fade-in-section">
+  <h2><span class="heading-underline">Galleria Fotografica</span></h2>
+  <div class="section-divider gold-gradient-divider animate-divider"></div>
+    <div class="gallery-grid">
+      <!-- Firebase-only gallery: images will be injected by gallery.js. -->
+    </div>
+      <div id="lightbox-modal" class="lightbox-modal" tabindex="-1" aria-modal="true" role="dialog" style="display:none;">
+        <span class="lightbox-close" tabindex="0">&times;</span>
+  <img class="lightbox-img" src="" alt="Vista ingrandita galleria">
+      </div>
+    </section>
+
+    <!-- Google Reviews Section -->
+    <section id="reviews" class="reviews fade-in-section">
+  <h2><span class="heading-underline">Recensioni Google</span></h2>
+  <div class="section-divider gold-gradient-divider animate-divider"></div>
+      <div class="reviews-list"></div>
+      <div class="review-cta">
+  <a href="https://maps.app.goo.gl/NZYThS6jPUyKDAXf8" target="_blank" rel="noopener" class="leave-review-btn">Lascia una recensione su Google</a>
+      </div>
+    </section>
+  <section id="contact" class="contact fade-in-section">
+  <h2><span class="heading-underline">Contatti</span></h2>
+  <div class="section-divider gold-gradient-divider animate-divider"></div>
+      <div class="contact-flex">
+        <div class="contact-info-card">
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true" title="Indirizzo">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z" fill="none"/>
+                <circle cx="12" cy="11" r="2" fill="none"/>
+              </svg>
+            </span>
+            <span>Indirizzo: <span class="info-main">Via Antonello da Messina, 34, 90015 Cefalù PA</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true" title="Telefono">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 19 19.5 19.5 0 0 1 5.2 13 19.8 19.8 0 0 1 3.22 4.18 2 2 0 0 1 5.2 2.2h3a2 2 0 0 1 2 1.72c.1.95.34 1.88.7 2.76a2 2 0 0 1-.45 2.11L9.9 9.35a16 16 0 0 0 4.75 4.75l.56-.55a2 2 0 0 1 2.11-.45c.88.36 1.81.6 2.76.7A2 2 0 0 1 22 16.92z" fill="none"/>
+              </svg>
+            </span>
+            <span>Telefono: <a href="tel:+390921996959">0921 996959</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true" title="WhatsApp">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false" preserveAspectRatio="xMidYMid meet">
+                <circle cx="12" cy="12" r="9" fill="none"/>
+                <path d="M15.5 14.5c-.2 0-1-.5-1.2-.6-.2-.1-.3 0-.4.1l-.5.6c-.1.1-.2.2-.4.1-1-.3-2.1-1.2-2.9-2-.8-.8-1.7-1.9-2-2.9-.1-.2 0-.3.1-.4l.6-.5c.1-.1.2-.3.1-.4-.1-.3-.6-1.1-.7-1.4-.1-.3-.3-.3-.4-.3h-.8c-.2 0-.4.1-.6.3-.3.3-1 1.1-1 2.2-.1 1.5.9 2.8 1.2 3.2.3.4 1.8 2.6 4.1 3.6 2 .9 3.2.9 3.6.8.5-.1 1.2-.5 1.5-1 .2-.4.2-1 .2-1.1 0-.1-.1-.2-.2-.2z" fill="none"/>
+              </svg>
+            </span>
+            <span>WhatsApp: <a href="https://wa.me/393762792841" target="_blank" rel="noopener">+39 376 279 2841</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true" title="Email">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <rect x="3" y="5" width="18" height="14" rx="2" fill="none"/>
+                <path d="M3 7l9 6 9-6" fill="none"/>
+              </svg>
+            </span>
+            <span>Email: <a href="mailto:adpasticceriasferruzza@gmail.com">adpasticceriasferruzza@gmail.com</a></span>
+          </div>
+          <div class="info-row social-row">
+            <div class="social-links">
+              <a class="icon" href="https://www.instagram.com/ad_sferruzza_pasticceria/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+                </svg>
+                <span class="sr-only">Instagram</span>
+              </a>
+              <a class="icon" href="https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.14 8.44 9.93v-7.02H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34v7.02C18.34 21.21 22 17.07 22 12.07z"/>
+                </svg>
+                <span class="sr-only">Facebook</span>
+              </a>
+              <a class="icon" href="https://www.tiktok.com/@ad_sferruzza_pasticceria" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12.5 2h3.2a5.7 5.7 0 0 0 1.7 3.5 5.8 5.8 0 0 0 3.6 1.3v3.3a9 9 0 0 1-5.3-1.8v6.8a6.2 6.2 0 1 1-6.2-6.2c.5 0 1 .1 1.5.2v3.4a2.9 2.9 0 1 0 2.1 2.8V2z"/>
+                </svg>
+                <span class="sr-only">TikTok</span>
+              </a>
+            </div>
+          </div>
+          <div class="opening-hours">
+            <h3>Orari di apertura</h3>
+            <ul>
+              <li>Lunedì: 07:00–20:00</li>
+              <li>Martedì: 07:00–20:00</li>
+              <li>Mercoledì: Chiuso</li>
+              <li>Giovedì: 07:00–20:00</li>
+              <li>Venerdì: 07:00–20:00</li>
+              <li>Sabato: 07:00–20:00</li>
+              <li>Domenica: 07:00–15:00</li>
+            </ul>
+            <div style="margin-top:0.7rem;">
+              <a href="https://maps.app.goo.gl/ofUq6zwd3FtZVPFXA" target="_blank" rel="noopener" style="color:var(--accent); font-weight:bold; text-decoration:underline;">Vedi su Google Maps con orari aggiornati</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" name="contact" autocomplete="on" method="post" action="https://formsubmit.co/adpasticceriasferruzza@gmail.com">
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_subject" value="Nuovo messaggio dal sito AD Sferruzza">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="/?success=true#contact">
+            <!-- Honeypot anti-spam field -->
+            <div style="position:absolute;left:-9999px;visibility:hidden;" aria-hidden="true">
+              <label for="_honey">Lascia questo campo vuoto</label>
+              <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-row">
+              <label for="name">Nome*</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+            <div class="form-row">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-row">
+              <label for="phone">Telefono</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="form-row">
+              <label for="message">Messaggio*</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Invia Messaggio</button>
+            <p id="formStatus" class="form-status" aria-live="polite" hidden>Grazie! Il tuo messaggio è stato inviato.</p>
+          </form>
+        </div>
+      </div>
+      <div class="maps-embed" style="margin-top:2.5rem;">
+        <div style="position:relative; width:100%; height:300px; border-radius:1rem; overflow:hidden;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327.3938379640247!2d14.0171215!3d38.031318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13173bed9362f231%3A0xcfdc66562e14f78e!2sAD%20Sferruzza%20Pasticceria!5e0!3m2!1sit!2sit!4v1697040000000!5m2!1sit!2sit"
+            width="100%"
+            height="300"
+            style="border:0; display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mappa AD Sferruzza Pasticceria"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="footer-divider gold-gradient-divider animate-divider"></div>
+  <footer>
+    <div class="footer-watermark">
+      <a href="/" aria-label="AD Sferruzza Pasticceria">
+        <img src="images/logo.png" alt="AD Sferruzza Pasticceria" width="240" height="58" style="display:block; margin:0 auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.2));">
+      </a>
+    </div>
+    <p class="footer-address">Via Antonello da Messina, 34, 90015 Cefalù (PA)</p>
+    <p>&copy; 2025 AD Sferruzza Pasticceria. Tutti i diritti riservati. <a href="/privacy.html">Privacy</a></p>
+  </footer>
+  <button id="scrollToTopBtn" aria-label="Torna su" title="Torna su">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" fill="#181818"/><path d="M9 16l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/393762792841?text=Ciao%20AD%20Sferruzza!%20Vorrei%20chiedere%20informazioni%20su..." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chatta su WhatsApp" title="Chatta su WhatsApp">
+    <img src="images/icons/whatsapp.svg" width="28" height="28" alt="" />
+  </a>
+  <div class="whatsapp-label"><a href="https://wa.me/393762792841" target="_blank" rel="noopener">Chatta su WhatsApp</a></div>
+
+  <!-- WhatsApp Welcome Popup -->
+  <div class="whatsapp-popup" id="whatsappPopup" role="dialog" aria-live="polite" aria-label="Benvenuto">
+    <div class="popup-content">
+      <div class="popup-header">
+        <span class="popup-title">Hai bisogno di aiuto?</span>
+        <button class="popup-close" id="closeWhatsappPopup" aria-label="Chiudi">&times;</button>
+      </div>
+      <p>Clicca l’icona WhatsApp per scriverci.</p>
+    </div>
+  </div>
+</body>
+</html>

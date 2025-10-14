@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | AD Sferruzza</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="firebase-init.js"></script>
+  <script src="admin.js" defer></script>
+  <style>
+    .admin-wrap { max-width: 900px; margin: 2rem auto; padding: 1rem; }
+    .admin-card { background:#2d2d2d; border-radius: 1rem; padding: 1rem 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(246,231,182,0.08);} 
+    .admin-card h2 { margin-top: 0; }
+    .row { display:flex; gap:1rem; flex-wrap:wrap; }
+    input[type="text"], input[type="number"], textarea { width:100%; padding:0.6rem; border-radius:0.6rem; border:1px solid #444; background:#1f1f1f; color:#F6E7B6; }
+  input[type="file"] { width:100%; padding:0.55rem; border-radius:0.6rem; border:1px solid #444; background:#1f1f1f; color:#F6E7B6; }
+  input[type="file"]::file-selector-button { margin-right:0.6rem; border:none; background: linear-gradient(90deg, #FFD700, #B8860B); color:#232323; padding:0.45rem 0.8rem; border-radius:999px; cursor:pointer; font-weight:700; }
+    label { font-weight:700; display:block; margin-top:0.6rem; }
+    button.admin-btn { cursor:pointer; border:none; padding:0.6rem 1rem; border-radius:999px; background: linear-gradient(90deg, #FFD700, #B8860B); color:#232323; font-weight:700; margin-top:0.8rem; }
+    .notice { padding:0.8rem; border-radius:0.6rem; background:#3a2f00; color:#fffbe6; }
+    .hidden { display:none; }
+    /* Upload progress */
+    .progress { margin-top:0.6rem; background:#333; border-radius:8px; height:10px; overflow:hidden; }
+    .progress-bar { height:100%; width:0%; background: linear-gradient(90deg, #FFD700, #B8860B); transition: width .2s ease; }
+    .progress-text { margin-top:0.4rem; font-size:0.9rem; opacity:0.85; }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <h1>Area Admin</h1>
+    <p class="notice" id="fbWarn">Configura Firebase in <code>firebase-config.js</code> e imposta <code>FIREBASE_ENABLED=true</code> per attivare l'area riservata.</p>
+
+    <div class="admin-card" id="authCard">
+      <h2>Accesso</h2>
+      <div id="authLoggedOut">
+        <label>Email</label>
+        <input type="text" id="email" placeholder="admin@example.com" autocomplete="username">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+        <div class="row">
+          <button class="admin-btn" id="btnLogin">Accedi</button>
+          <button class="admin-btn" id="btnRegister">Registra (una tantum)</button>
+        </div>
+      </div>
+      <div id="authLoggedIn" class="hidden">
+        <p>Connesso come <span id="userEmail"></span></p>
+        <button class="admin-btn" id="btnLogout">Esci</button>
+      </div>
+    </div>
+
+    <div class="admin-card hidden" id="postCard">
+      <h2>Nuovo Articolo del Blog</h2>
+      <label>Titolo</label>
+      <input type="text" id="postTitle">
+      <label>Riassunto</label>
+      <textarea id="postExcerpt" rows="3"></textarea>
+      <div class="row">
+        <div style="flex:1">
+          <label>Tempo di lettura (minuti)</label>
+          <input type="number" id="postReadTime" value="3" min="1" max="30">
+        </div>
+        <div style="flex:1">
+          <label>Data</label>
+          <input type="text" id="postDate" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+      <label>Contenuto (paragrafi, separati da una riga vuota)</label>
+      <textarea id="postContent" rows="8"></textarea>
+      <label>Immagine di copertina</label>
+      <input type="file" id="postImage" accept="image/*">
+      <button class="admin-btn" id="btnPublishPost">Pubblica</button>
+      <p id="postStatus" class="notice hidden"></p>
+    </div>
+
+    <div class="admin-card hidden" id="postManageCard">
+      <h2>Gestisci Articoli</h2>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:.5rem;">
+        <button class="admin-btn" id="btnRefreshPosts">Aggiorna elenco</button>
+        <span style="opacity:.8;">Elenco e cancellazione</span>
+      </div>
+      <p id="postManageStatus" class="notice hidden"></p>
+      <div id="postList"></div>
+    </div>
+
+  <div class="admin-card hidden" id="photoCard">
+      <h2>Carica Foto Galleria</h2>
+      <label>Foto</label>
+      <input type="file" id="galleryFiles" accept="image/*" multiple>
+  <label for="photoAlt">Descrizione/Alt (opzionale, usata per tutte le foto)</label>
+      <input type="text" id="photoAlt" placeholder="Descrizione">
+  <button class="admin-btn" id="btnUploadPhotos">Carica</button>
+  <div id="photoProgress" class="progress hidden" aria-hidden="true"><div id="photoProgressBar" class="progress-bar"></div></div>
+  <div id="photoProgressText" class="progress-text hidden" aria-live="polite"></div>
+  <p id="photoStatus" class="notice hidden" aria-live="polite"></p>
+      <div style="margin-top:0.6rem; display:flex; align-items:center; gap:8px;">
+        <button class="admin-btn" id="btnRefreshPhotos">Aggiorna elenco</button>
+        <span style="opacity:.8;">Gestione foto</span>
+      </div>
+      <div id="photoList" style="margin-top:0.8rem;"></div>
+    </div>
+
+    <div class="admin-card hidden" id="featuredCard">
+      <h2>Prodotti in Evidenza</h2>
+      <label for="featuredName">Nome</label>
+      <input type="text" id="featuredName" placeholder="Es. Cannoli">
+      <label for="featuredText">Descrizione/Prezzo</label>
+      <input type="text" id="featuredText" placeholder="Es. 11 cialde con 1kg di ricotta, 28€">
+      <div class="row" style="align-items:flex-end;">
+        <div style="flex:1">
+          <label for="featuredOrder">Ordine (1=primo)</label>
+          <input type="number" id="featuredOrder" min="1" value="1">
+        </div>
+        <div style="flex:1">
+          <label for="featuredImage">Immagine</label>
+          <input type="file" id="featuredImage" accept="image/*">
+        </div>
+      </div>
+      <button class="admin-btn" id="btnAddFeatured">Aggiungi</button>
+      <p id="featuredStatus" class="notice hidden" aria-live="polite"></p>
+    </div>
+
+    <div class="admin-card hidden" id="featuredManageCard">
+      <h2>Gestisci Prodotti in Evidenza</h2>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:.5rem;">
+        <button class="admin-btn" id="btnRefreshFeatured">Aggiorna elenco</button>
+        <button class="admin-btn" id="btnSaveFeaturedOrder" title="Salva nuovo ordine">Salva ordine</button>
+        <span style="opacity:.8;">Trascina per riordinare, modifica e salva</span>
+      </div>
+      <div id="featuredList"></div>
+    </div>
+  </div>
+</body>
+</html>
