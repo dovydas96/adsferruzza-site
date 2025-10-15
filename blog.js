@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch(e) {
       console.warn('Firebase posts fallback:', e.message);
     }
-    // Fallback to local JSON
-    const res = await fetch('blog/posts.json', { cache: 'no-store' });
+  // Fallback to local JSON (use absolute path to be robust under redirects)
+  const jsonPath = (location.protocol === 'file:' ? './blog/posts.json' : '/blog/posts.json');
+  const res = await fetch(jsonPath, { cache: 'no-store' });
     if (!res.ok) throw new Error('Impossibile caricare i post');
     const posts = await res.json();
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
