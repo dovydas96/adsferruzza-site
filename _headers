@@ -6,7 +6,7 @@
   Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=30
 
 # Blog JSON should also refresh frequently
-/blog/*.json
+/blogdata/*.json
   Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=30
 
 # CSS and JS can be cached for a year with immutable hashes (filenames rarely change here, but safe)

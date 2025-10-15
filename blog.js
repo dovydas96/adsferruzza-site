@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.warn('Firebase posts fallback:', e.message);
     }
   // Fallback to local JSON (use absolute path to be robust under redirects)
-  const jsonPath = (location.protocol === 'file:' ? './blog/posts.json' : '/blog/posts.json');
+  const jsonPath = (location.protocol === 'file:' ? './blogdata/posts.json' : '/blogdata/posts.json');
   const res = await fetch(jsonPath, { cache: 'no-store' });
     if (!res.ok) throw new Error('Impossibile caricare i post');
     const posts = await res.json();
