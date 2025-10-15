@@ -7,8 +7,4 @@
 
 # Root now live: remove Coming Soon override
 
-# Pretty path for blog post without .html
-/blog-post.html	/blog-post.html	200
-/blog-post	/blog-post.html	301
-/blog-post/	/blog-post.html	301
 
