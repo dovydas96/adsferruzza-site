@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6, .logo {
   overflow: hidden;
 }
 .gold-gradient-divider {
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 50%, var(--accent) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, var(--accent) 100%);
 }
 .animate-divider::before {
   content: "";
@@ -160,9 +160,22 @@ h1, h2, h3, h4, h5, h6, .logo {
   display: block;
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, #F6E7B6 100%);
+  /* Base white→gold gradient with a moving white shimmer overlay */
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.95) 0%, var(--accent) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+  background-size: 100% 100%, 40% 100%;
+  background-position: 0 0, -40% 0;
+  background-repeat: no-repeat;
   border-radius: 2px;
   margin: 0 auto 2rem auto;
+  animation: section-line-shimmer 2.6s linear infinite;
+}
+
+@keyframes section-line-shimmer {
+  0%   { background-position: 0 0, -40% 0; }
+  60%  { background-position: 0 0, 100% 0; }
+  100% { background-position: 0 0, 100% 0; }
 }
 /* --- Contact Section Layout --- */
 .contact-flex {
@@ -973,7 +986,7 @@ footer {
   margin: 0 0 1.2rem 0;
   border: none;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 50%, var(--accent) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, var(--accent) 100%);
   opacity: 0.95;
   position: relative;
   overflow: hidden;
