@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const postDate = document.getElementById('postDate');
   const postContent = document.getElementById('postContent');
   const postImage = document.getElementById('postImage');
+  const postSeoTitle = document.getElementById('postSeoTitle');
+  const postSeoDescription = document.getElementById('postSeoDescription');
+  const postOgImage = document.getElementById('postOgImage');
   const btnPublishPost = document.getElementById('btnPublishPost');
   const postStatus = document.getElementById('postStatus');
   const btnRefreshPosts = document.getElementById('btnRefreshPosts');
@@ -98,6 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const contentParas = postContent.value.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
 
       let imageUrl = '';
+      let ogImageUrl = '';
       if (postImage.files[0]) {
         const file = postImage.files[0];
         // Store blog covers under 'blog-covers/' to match Storage rules
@@ -109,13 +113,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         imageUrl = await ref.getDownloadURL();
       }
+      if (postOgImage && postOgImage.files && postOgImage.files[0]) {
+        const file = postOgImage.files[0];
+        const stampedName = `${slug}-og-${Date.now()}-${file.name}`.replace(/\s+/g, '_');
+        const ref = storage.ref().child(`blog-og/${stampedName}`);
+        await ref.put(file, {
+          contentType: file.type || 'image/jpeg',
+          cacheControl: 'public, max-age=31536000, immutable'
+        });
+        ogImageUrl = await ref.getDownloadURL();
+      }
 
-      await db.collection('posts').doc(slug).set({
+      const seoTitle = (postSeoTitle?.value || '').trim();
+      const seoDescription = (postSeoDescription?.value || '').trim();
+      const payload = {
         slug, title, date, readTime, image: imageUrl, excerpt, content: contentParas
-      }, { merge: true });
+      };
+      if (seoTitle) payload.seoTitle = seoTitle;
+      if (seoDescription) payload.seoDescription = seoDescription;
+      if (ogImageUrl) payload.ogImage = ogImageUrl;
+
+      await db.collection('posts').doc(slug).set(payload, { merge: true });
 
       setStatus(postStatus, 'Articolo pubblicato!');
-      postTitle.value = ''; postExcerpt.value = ''; postReadTime.value = '3'; postDate.value = ''; postContent.value = ''; postImage.value='';
+  postTitle.value = ''; postExcerpt.value = ''; postReadTime.value = '3'; postDate.value = ''; postContent.value = ''; postImage.value='';
+  if (postSeoTitle) postSeoTitle.value = '';
+  if (postSeoDescription) postSeoDescription.value = '';
+  if (postOgImage) postOgImage.value = '';
     } catch (e) {
       setStatus(postStatus, 'Errore: ' + e.message);
     }

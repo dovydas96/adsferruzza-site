@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const posts = await loadPosts();
       const post = posts.find(p => p.slug === slug) || posts[0];
       if (!post) throw new Error('Post non trovato');
-      titleEl.textContent = post.title;
-      metaEl.textContent = `${formatDate(post.date)} · ${post.readTime} min`;
+  titleEl.textContent = post.title;
+  metaEl.textContent = `${formatDate(post.date)} · ${post.readTime} min`;
   // Use post hero image or a sensible fallback
   imgEl.src = post.image || 'images/family-hero.jpg';
   imgEl.alt = post.title;
@@ -110,7 +110,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   imgEl.decoding = 'async';
       contentEl.innerHTML = post.content.map(p => `<p>${p}</p>`).join('');
       crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${post.title}`;
-      document.title = `${post.title} | AD Sferruzza Pasticceria`;
+  // Compute preferred SEO title/description values with graceful fallback
+  const truncate = (s, n=160) => (s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + '…');
+  const effectiveTitle = (post.seoTitle || post.metaTitle || post.title || '').trim();
+  const fallbackText = Array.isArray(post.content) ? post.content.join(' ') : '';
+  const desc = truncate(String(post.seoDescription || post.metaDescription || post.excerpt || fallbackText || '').trim());
+  document.title = `${effectiveTitle} | AD Sferruzza Pasticceria`;
 
       // --- Dynamic SEO tags: description, canonical, OG/Twitter ---
       const ensureMeta = (selector, attrs) => {
@@ -128,10 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         link.setAttribute('href', href);
         return link;
       };
-      const truncate = (s, n=160) => (s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + '…');
-      // Preferred description: explicit excerpt; fallback to first paragraphs
-      const fallbackText = Array.isArray(post.content) ? post.content.join(' ') : '';
-      const desc = truncate(String(post.excerpt || fallbackText || '').trim());
+  // desc and effectiveTitle computed above
       // Canonical absolute URL using production host
       const canonicalUrl = `https://adsferruzza.com/blog-post.html?slug=${encodeURIComponent(post.slug)}`;
       ensureLink('canonical', canonicalUrl);
@@ -141,17 +143,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       mDesc.setAttribute('content', desc || 'Articolo del blog di AD Sferruzza Pasticceria.');
       // Open Graph
       ensureMeta('meta[property="og:type"]', { property:'og:type', content:'article' }).setAttribute('content','article');
-      ensureMeta('meta[property="og:title"]', { property:'og:title' }).setAttribute('content', `${post.title} | AD Sferruzza Pasticceria`);
+      ensureMeta('meta[property="og:title"]', { property:'og:title' }).setAttribute('content', `${effectiveTitle} | AD Sferruzza Pasticceria`);
       ensureMeta('meta[property="og:description"]', { property:'og:description' }).setAttribute('content', desc);
       ensureMeta('meta[property="og:url"]', { property:'og:url' }).setAttribute('content', canonicalUrl);
       const defaultOg = 'https://adsferruzza.com/images/family-hero.jpg';
-      const absImage = post.image
-        ? (post.image.startsWith('http') ? post.image : `https://adsferruzza.com/${post.image.replace(/^\/?/, '')}`)
+      const ogImage = post.ogImage || post.image;
+      const absImage = ogImage
+        ? (ogImage.startsWith('http') ? ogImage : `https://adsferruzza.com/${ogImage.replace(/^\/?/, '')}`)
         : defaultOg;
       ensureMeta('meta[property="og:image"]', { property:'og:image' }).setAttribute('content', absImage);
       // Twitter Card
       ensureMeta('meta[name="twitter:card"]', { name:'twitter:card' }).setAttribute('content','summary_large_image');
-      ensureMeta('meta[name="twitter:title"]', { name:'twitter:title' }).setAttribute('content', `${post.title} | AD Sferruzza Pasticceria`);
+      ensureMeta('meta[name="twitter:title"]', { name:'twitter:title' }).setAttribute('content', `${effectiveTitle} | AD Sferruzza Pasticceria`);
       ensureMeta('meta[name="twitter:description"]', { name:'twitter:description' }).setAttribute('content', desc);
   ensureMeta('meta[name="twitter:image"]', { name:'twitter:image' }).setAttribute('content', absImage);
 
@@ -161,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         '@type': 'Article',
         headline: post.title,
         description: desc,
-        image: post.image?.startsWith('http') ? post.image : `https://adsferruzza.com/${post.image.replace(/^\/?/, '')}`,
+  image: ogImage?.startsWith('http') ? ogImage : `https://adsferruzza.com/${(ogImage || '').replace(/^\/?/, '')}`,
         author: { '@type': 'Organization', name: 'AD Sferruzza Pasticceria' },
         datePublished: post.date,
         dateModified: post.updatedAt || post.date,

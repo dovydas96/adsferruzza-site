@@ -60,6 +60,16 @@
       <input type="text" id="postTitle">
       <label>Riassunto</label>
       <textarea id="postExcerpt" rows="3"></textarea>
+      <div class="row" style="margin-top:.25rem;gap:1rem;">
+        <div style="flex:1; min-width:240px;">
+          <label for="postSeoTitle">Titolo SEO (opzionale) <small style="opacity:.7">(~60 caratteri)</small></label>
+          <input type="text" id="postSeoTitle" maxlength="120" placeholder="Es. Cannolo perfetto: guida completa">
+        </div>
+        <div style="flex:1; min-width:240px;">
+          <label for="postSeoDescription">Descrizione SEO (opzionale) <small style="opacity:.7">(~160 caratteri)</small></label>
+          <textarea id="postSeoDescription" rows="2" maxlength="300" placeholder="Sintesi che comparirà su Google e nei social"></textarea>
+        </div>
+      </div>
       <div class="row">
         <div style="flex:1">
           <label>Tempo di lettura (minuti)</label>
@@ -74,6 +84,8 @@
       <textarea id="postContent" rows="8"></textarea>
       <label>Immagine di copertina</label>
       <input type="file" id="postImage" accept="image/*">
+      <label>Immagine Social (OG/Twitter) – opzionale</label>
+      <input type="file" id="postOgImage" accept="image/*">
       <button class="admin-btn" id="btnPublishPost">Pubblica</button>
       <p id="postStatus" class="notice hidden"></p>
     </div>
