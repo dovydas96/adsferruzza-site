@@ -12,7 +12,8 @@ $query = "?languageCode=$Language"
 $uri = "$base$query"
 $headers = @{
   "X-Goog-Api-Key" = $ApiKey
-  "X-Goog-FieldMask" = "reviews,displayName,googleMapsUri,rating,userRatingCount"
+  # Include opening + special hours in the field mask so we can surface them client-side
+  "X-Goog-FieldMask" = "reviews,displayName,googleMapsUri,rating,userRatingCount,regularOpeningHours,regularOpeningHours.weekdayDescriptions,regularOpeningHours.periods,specialOpeningHours,specialOpeningHours.specialHourPeriods"
 }
 
 Write-Host "Fetching reviews (Places API v1) for place: $PlaceId..."
@@ -34,6 +35,8 @@ $place = [PSCustomObject]@{
   rating = $resp.rating
   user_ratings_total = $resp.userRatingCount
   url = $resp.googleMapsUri
+  regularOpeningHours = $resp.regularOpeningHours  # Contains weekdayDescriptions (localized) & periods
+  specialOpeningHours = $resp.specialOpeningHours  # Contains specialHourPeriods with dates and open/close status
 }
 
 $reviews = @()

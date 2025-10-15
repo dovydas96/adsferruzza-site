@@ -1,0 +1,12 @@
+{
+  "name": "adsferruzza-site-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:hero": "node scripts/build-hero.mjs",
+    "import:hero": "node scripts/import-hero.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.4"
+  }
+}

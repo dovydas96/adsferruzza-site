@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         img.src = p.url;
         img.alt = p.alt || 'Foto galleria';
         img.className = 'gallery-img';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        // Optional width/height to reduce CLS if you know typical dimensions; left unset if unknown
         img.tabIndex = 0;
         grid.appendChild(img);
       });
@@ -53,12 +56,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     for (const itemRef of acc.reverse()) {
       try {
         const url = await itemRef.getDownloadURL();
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Foto galleria';
-        img.className = 'gallery-img';
-        img.tabIndex = 0;
-        grid.appendChild(img);
+  const img = document.createElement('img');
+  img.src = url;
+  img.alt = 'Foto galleria';
+  img.className = 'gallery-img';
+  img.loading = 'lazy';
+  img.decoding = 'async';
+  img.tabIndex = 0;
+  grid.appendChild(img);
       } catch (_) { /* skip broken objects */ }
     }
   } catch (e) {

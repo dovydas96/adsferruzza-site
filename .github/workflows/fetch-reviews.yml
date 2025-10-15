@@ -16,23 +16,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fetch reviews with Place ID (preferred)
-        if: env.GOOGLE_PLACE_ID != ''
+      - name: Fetch reviews (Place ID preferred, fallback to Maps URL)
         shell: pwsh
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
-        run: |
-          ./scripts/fetch-google-reviews.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -PlaceId $env:GOOGLE_PLACE_ID -OutputPath data/reviews.json -Language it -Max 6
-
-      - name: Fetch reviews from Maps URL (fallback)
-        if: env.GOOGLE_PLACE_ID == '' && env.GOOGLE_MAPS_URL != ''
-        shell: pwsh
-        env:
-          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           GOOGLE_MAPS_URL: ${{ secrets.GOOGLE_MAPS_URL }}
         run: |
-          ./scripts/fetch-from-maps-url.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -MapsUrl $env:GOOGLE_MAPS_URL -OutputPath data/reviews.json -Language it
+          if ($env:GOOGLE_PLACES_API_KEY -and $env:GOOGLE_PLACE_ID) {
+            ./scripts/fetch-google-reviews.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -PlaceId $env:GOOGLE_PLACE_ID -OutputPath data/reviews.json -Language it -Max 6
+          } elseif ($env:GOOGLE_PLACES_API_KEY -and $env:GOOGLE_MAPS_URL) {
+            ./scripts/fetch-from-maps-url.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -MapsUrl $env:GOOGLE_MAPS_URL -OutputPath data/reviews.json -Language it
+          } else {
+            Write-Host "[reviews] Skipping: required secrets missing"
+          }
 
       - name: Commit changes if any
         shell: bash

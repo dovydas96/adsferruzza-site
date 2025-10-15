@@ -59,57 +59,96 @@ document.addEventListener('DOMContentLoaded', function () {
 		appearOnScroll.observe(fader);
 	});
 
-	// Animated nav underline
-	const nav = document.querySelector('nav');
-	const underline = document.querySelector('.nav-underline');
-	const links = document.querySelectorAll('.nav-link');
-	if (nav && underline && links.length) {
-		function moveUnderline(link) {
-			const rect = link.getBoundingClientRect();
-			const navRect = nav.getBoundingClientRect();
-			underline.style.left = (rect.left - navRect.left) + 'px';
-			underline.style.width = rect.width + 'px';
+
+	function initHeaderUI() {
+		// Animated nav underline
+		const nav = document.querySelector('nav');
+		const underline = document.querySelector('.nav-underline');
+		const links = document.querySelectorAll('.nav-link');
+		if (nav && underline && links.length && !nav.dataset.underlineBound) {
+			function moveUnderline(link) {
+				const rect = link.getBoundingClientRect();
+				const navRect = nav.getBoundingClientRect();
+				underline.style.left = (rect.left - navRect.left) + 'px';
+				underline.style.width = rect.width + 'px';
+			}
+			links.forEach(link => {
+				link.addEventListener('mouseenter', () => moveUnderline(link));
+				link.addEventListener('focus', () => moveUnderline(link));
+				link.addEventListener('mouseleave', () => { underline.style.width = 0; });
+				link.addEventListener('blur', () => { underline.style.width = 0; });
+			});
+			nav.dataset.underlineBound = 'true';
 		}
-		links.forEach(link => {
-			link.addEventListener('mouseenter', () => moveUnderline(link));
-			link.addEventListener('focus', () => moveUnderline(link));
-			link.addEventListener('mouseleave', () => { underline.style.width = 0; });
-			link.addEventListener('blur', () => { underline.style.width = 0; });
-		});
+
+		// Redesigned burger: toggle full-screen overlay via body.menu-open
+		if (!document.body.dataset.navDelegated) {
+			document.addEventListener('click', (e) => {
+				const btn = e.target.closest('.nav-toggle');
+				if (btn) {
+					const isOpen = document.body.classList.contains('menu-open');
+					document.body.classList.toggle('menu-open', !isOpen);
+					btn.setAttribute('aria-expanded', String(!isOpen));
+					return;
+				}
+				// Close via explicit X button inside overlay
+				const closeBtn = e.target.closest('#primary-nav .nav-close');
+				if (closeBtn && window.matchMedia('(max-width: 900px)').matches) {
+					document.body.classList.remove('menu-open');
+					const toggle = document.querySelector('.nav-toggle');
+					if (toggle) toggle.setAttribute('aria-expanded', 'false');
+					return;
+				}
+				// close when a nav link is clicked (mobile overlay)
+				const navLink = e.target.closest('#primary-nav .nav-link');
+				if (navLink && window.matchMedia('(max-width: 900px)').matches) {
+					document.body.classList.remove('menu-open');
+					const toggle = document.querySelector('.nav-toggle');
+					if (toggle) toggle.setAttribute('aria-expanded', 'false');
+					return;
+				}
+				// outside click to close on mobile
+				if (window.matchMedia('(max-width: 900px)').matches) {
+					if (document.body.classList.contains('menu-open')) {
+						const within = e.target.closest('#primary-nav') || e.target.closest('.nav-toggle');
+						if (!within) {
+							document.body.classList.remove('menu-open');
+							const toggle = document.querySelector('.nav-toggle');
+							if (toggle) toggle.setAttribute('aria-expanded', 'false');
+						}
+					}
+				}
+			});
+			// Escape to close
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') {
+					if (document.body.classList.contains('menu-open')) {
+						document.body.classList.remove('menu-open');
+						const toggle = document.querySelector('.nav-toggle');
+						if (toggle) toggle.setAttribute('aria-expanded', 'false');
+					}
+				}
+			});
+			// On resize to desktop, clear mobile open state
+			window.addEventListener('resize', () => {
+				if (!window.matchMedia('(max-width: 900px)').matches) {
+					document.body.classList.remove('menu-open');
+					const toggle = document.querySelector('.nav-toggle');
+					if (toggle) toggle.setAttribute('aria-expanded', 'false');
+				}
+			});
+			document.body.dataset.navDelegated = 'true';
+		}
 	}
 
-	// Hamburger menu toggle (≤600px)
-	const toggle = document.querySelector('.nav-toggle');
-	const primaryNav = document.getElementById('primary-nav');
-	if (toggle && primaryNav) {
-		toggle.addEventListener('click', () => {
-			const expanded = toggle.getAttribute('aria-expanded') === 'true';
-			toggle.setAttribute('aria-expanded', String(!expanded));
-			primaryNav.classList.toggle('show', !expanded);
-		});
-		// Close menu when a nav link is clicked (useful for one-page anchors)
-		primaryNav.addEventListener('click', (e) => {
-			const a = e.target.closest('a.nav-link');
-			if (a && window.matchMedia('(max-width: 600px)').matches) {
-				primaryNav.classList.remove('show');
-				toggle.setAttribute('aria-expanded', 'false');
-			}
-		});
-	}
+	initHeaderUI();
+	document.addEventListener('partials:loaded', initHeaderUI, { once: false });
 
-	// Parallax hero image
-	const parallaxHero = document.querySelector('.parallax-hero');
+	// Parallax disabled: keep hero image static so it's fully visible without cropping
 	const heroImg = document.querySelector('.hero-img');
-	if (parallaxHero && heroImg) {
-		window.addEventListener('scroll', function () {
-			const scrolled = window.scrollY;
-			const offset = parallaxHero.offsetTop;
-			if (window.innerWidth > 700) {
-				heroImg.style.transform = `translateY(${scrolled * 0.15}px)`;
-			} else {
-				heroImg.style.transform = '';
-			}
-		});
+	if (heroImg) {
+		// Ensure no residual transform
+		heroImg.style.transform = '';
 	}
 
 	// Build Gallery Carousel pulling images from Firebase when available
@@ -391,6 +430,37 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Button ripple effect
+
+	// Equalize contact card & form heights (robust against dynamic content changes)
+	(function equalizeContactPanels(){
+		const container = document.querySelector('.contact-flex');
+		if(!container) return;
+		// If using CSS grid, heights are handled by grid row sizing; do nothing.
+		if(getComputedStyle(container).display === 'grid') return;
+		const card = container.querySelector('.contact-info-card');
+		const form = container.querySelector('.contact-form');
+		if(!card || !form) return;
+		let rafId = null;
+		let lastH = 0;
+		function apply(){
+			card.style.removeProperty('min-height');
+			form.style.removeProperty('min-height');
+			const h = Math.max(card.offsetHeight, form.offsetHeight);
+			if(Math.abs(h - lastH) < 1) return; // prevent micro-growth loops
+			lastH = h;
+			card.style.minHeight = form.style.minHeight = h+'px';
+		}
+		function schedule(){
+			if(rafId) cancelAnimationFrame(rafId);
+			rafId = requestAnimationFrame(apply);
+		}
+		const ro = new ResizeObserver(schedule);
+		[card, form].forEach(el => ro.observe(el));
+		window.addEventListener('orientationchange', schedule);
+		window.addEventListener('resize', schedule);
+		document.addEventListener('hours-updated', schedule, { once:false });
+		schedule();
+	})();
 	function addRippleEffect(btn) {
 		btn.addEventListener('click', function(e) {
 			const rect = btn.getBoundingClientRect();
@@ -403,7 +473,20 @@ document.addEventListener('DOMContentLoaded', function () {
 			ripple.addEventListener('animationend', () => ripple.remove());
 		});
 	}
-	document.querySelectorAll('.submit-btn, .leave-review-btn').forEach(addRippleEffect);
+	const rippleSelector = '.submit-btn, .leave-review-btn, .blog-readmore, .gallery-prev, .gallery-next, .cta-phones a, .call-btn, .whatsapp-btn';
+	// Delegate to catch dynamically inserted buttons too
+	document.addEventListener('click', function(e){
+		const btn = e.target.closest(rippleSelector);
+		if(!btn) return;
+		const rect = btn.getBoundingClientRect();
+		const ripple = document.createElement('span');
+		ripple.className = 'ripple';
+		ripple.style.left = (e.clientX - rect.left) + 'px';
+		ripple.style.top = (e.clientY - rect.top) + 'px';
+		ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+		btn.appendChild(ripple);
+		ripple.addEventListener('animationend', () => ripple.remove());
+	}, true);
 
 	// Add gold SVG icons to social links
 	function addSocialIcons() {

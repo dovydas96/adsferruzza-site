@@ -24,13 +24,8 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
 
-# Temporary homepage (Coming Soon) should not be indexed or cached
-/
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-store
-/index.html
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-store
+# Root page now live: allow indexing (remove previous temporary noindex)
+# NOTE: Root will inherit fallback cache rule below (revalidate each request)
 
 # Coming soon page should not be cached or indexed
 /coming-soon
@@ -46,3 +41,4 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://firebasestorage.googleapis.com https://lh3.googleusercontent.com https://maps.googleapis.com https://maps.gstatic.com data:; script-src 'self' https://www.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://firestore.googleapis.com https://firebasestorage.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co

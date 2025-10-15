@@ -16,7 +16,8 @@ build/
 coverage/
 .cache/
 
-# Node (if tooling is added later)
-node_modules//.vscode/
-Thumbs.db
-.DS_Store
+# Node (tooling cache directories)
+node_modules/
+
+# Local artifacts not intended for deploy
+index.placeholder.html

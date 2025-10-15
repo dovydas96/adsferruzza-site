@@ -5,6 +5,4 @@
 # Keep admin accessible
 /admin.html	/admin.html	200
 
-# Root-only Coming Soon: avoid catch-all to prevent redirect loops
-/	/coming-soon/index.html	200
-/index.html	/coming-soon/index.html	200
+# Root now live: remove Coming Soon override

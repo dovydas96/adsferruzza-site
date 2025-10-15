@@ -29,7 +29,7 @@
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
-  <!-- Structured Data: LocalBusiness -->
+  <!-- Structured Data: LocalBusiness / Bakery (primary entity) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,8 +38,8 @@
     "image": [
       "/images/family-hero.jpg"
     ],
-    "@id": "",
-    "url": "/",
+    "@id": "https://adsferruzza.com/#business",
+    "url": "https://adsferruzza.com/",
     "telephone": "+39 0921 996959",
     "servesCuisine": ["Sicilian", "Italian", "Bakery"],
     "priceRange": "€€",
@@ -72,7 +72,34 @@
     ]
   }
   </script>
-  <!-- Structured Data: OfferCatalog for featured products -->
+  <!-- Structured Data: Organization (linked to same @id for clarity) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://adsferruzza.com/#org",
+    "name": "AD Sferruzza Pasticceria",
+    "url": "https://adsferruzza.com/",
+    "logo": "https://adsferruzza.com/images/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/ad_sferruzza_pasticceria/",
+      "https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/",
+      "https://www.tiktok.com/@ad_sferruzza_pasticceria"
+    ]
+  }
+  </script>
+  <!-- Structured Data: WebSite + potentialSearchAction (optional for internal search later) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://adsferruzza.com/#website",
+    "url": "https://adsferruzza.com/",
+    "name": "AD Sferruzza Pasticceria",
+    "publisher": {"@id": "https://adsferruzza.com/#org"}
+  }
+  </script>
+  <!-- Structured Data: OfferCatalog for featured products (static sample). Consider generating dynamically from Firestore. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

@@ -30,15 +30,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (!isPostPage && grid) {
+    // Feature flag: hide blogs entirely if disabled
+    if (window.BLOGS_ENABLED === false) {
+      grid.innerHTML = '<p style="opacity:.8; text-align:center; margin:1rem 0;">Articoli in arrivo…</p>';
+      return;
+    }
     try {
       const posts = await loadPosts();
       grid.innerHTML = '';
+      if (!posts || posts.length === 0) {
+        grid.innerHTML = '<p style="opacity:.8; text-align:center; margin:1rem 0;">Articoli in arrivo…</p>';
+        return;
+      }
       posts.forEach(p => {
         const art = document.createElement('article');
         art.className = 'blog-card';
         art.innerHTML = `
           <a class="blog-thumb" href="blog-post.html?slug=${encodeURIComponent(p.slug)}">
-            <img src="${p.image}" alt="${p.title}">
+            <img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async">
           </a>
           <div class="blog-content">
             <h2 class="blog-title"><a href="blog-post.html?slug=${encodeURIComponent(p.slug)}">${p.title}</a></h2>
@@ -55,6 +64,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (isPostPage) {
+    if (window.BLOGS_ENABLED === false) {
+      const contentEl = document.getElementById('postContent');
+      const titleEl = document.getElementById('postTitle');
+      const metaEl = document.getElementById('postMeta');
+      const imgEl = document.getElementById('postHeroImg');
+      const crumbEl = document.getElementById('postBreadcrumb');
+      if (titleEl) titleEl.textContent = 'Articoli in arrivo…';
+      if (metaEl) metaEl.textContent = '';
+      if (imgEl) { imgEl.src = ''; imgEl.alt = ''; }
+      if (contentEl) contentEl.innerHTML = '<p>Stiamo preparando i contenuti del blog. Torna presto a trovarci!</p>';
+      if (crumbEl) crumbEl.innerHTML = 'Home / Blog / …';
+      return;
+    }
     const params = new URLSearchParams(location.search);
     const slug = params.get('slug');
     const titleEl = document.getElementById('postTitle');
@@ -69,8 +91,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (!post) throw new Error('Post non trovato');
       titleEl.textContent = post.title;
       metaEl.textContent = `${formatDate(post.date)} · ${post.readTime} min`;
-      imgEl.src = post.image;
-      imgEl.alt = post.title;
+  imgEl.src = post.image;
+  imgEl.alt = post.title;
+  imgEl.loading = 'eager'; // hero image should load ASAP
+  imgEl.decoding = 'async';
       contentEl.innerHTML = post.content.map(p => `<p>${p}</p>`).join('');
       crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${post.title}`;
       document.title = `${post.title} | AD Sferruzza Pasticceria`;

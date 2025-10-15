@@ -1,65 +1,178 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AD Sferruzza – Prossimamente</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="description" content="Il nostro sito sarà presto online. Torna a trovarci a breve." />
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    <!-- Brand fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Site stylesheet for variables and colors -->
-    <link rel="stylesheet" href="/style.css">
-    <style>
-      :root { color-scheme: light dark; }
-      html, body { height: 100%; margin: 0; }
-      body {
-        min-height: 100%;
-        display: grid;
-        place-items: center;
-        background: #181818;
-        color: #f6f6f6;
-        font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      }
-      .wrap {
-        text-align: center;
-        padding: 2.5rem 1.5rem;
-        border-radius: 16px;
-        background: linear-gradient(180deg, rgba(45,45,45,0.9), rgba(35,35,35,0.9));
-        border: 1px solid rgba(var(--accent-rgb, 255,226,161), 0.25);
-        box-shadow: 0 16px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
-        max-width: 640px;
-        margin: 2rem;
-      }
-      .logo {
-        display: inline-block;
-        margin-bottom: 1rem;
-        filter: drop-shadow(0 1px 0 rgba(0,0,0,0.3));
-      }
-      h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); margin: 0.25rem 0 0.5rem; letter-spacing: .5px; }
-      .divider { width: 120px; height: 4px; margin: 0.75rem auto 1.25rem; border-radius: 2px; background: linear-gradient(90deg, var(--accent, #FFE2A1) 0%, var(--accent-dark, #D1A65A) 100%); }
-      p { margin: 0.5rem 0 1.25rem; line-height: 1.7; color: #F6E7B6; }
-      .contacts { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-      .pill { display: inline-block; padding: .55rem .9rem; border-radius: 999px; border: 1px solid rgba(var(--accent-rgb, 255,226,161), 0.45); color: #F6E7B6; text-decoration: none; }
-      .pill:hover { background: rgba(255,226,161,0.1); }
-    </style>
-  </head>
-  <body>
-    <main class="wrap" role="main" aria-labelledby="title">
-      <img class="logo" src="/images/logo.png" alt="AD Sferruzza Pasticceria" width="280" height="67" />
-      <h1 id="title">Prossimamente</h1>
-      <div class="divider" aria-hidden="true"></div>
-      <p>Stiamo preparando qualcosa di speciale. Il nostro sito sarà online a breve.</p>
-      <div class="contacts">
-        <a class="pill" href="mailto:adpasticceriasferruzza@gmail.com">Email</a>
-        <a class="pill" href="tel:+390921996959">Telefono</a>
-        <a class="pill" href="https://wa.me/393762792841" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="pill" href="https://www.instagram.com/ad_sferruzza_pasticceria/" target="_blank" rel="noopener">Instagram</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AD Sferruzza Pasticceria | Pasticceria artigianale a Cefalù</title>
+  <meta name="description" content="Pasticceria artigianale a Cefalù: dolci siciliani, cannoli, arancini, pane fresco e specialità fatte in casa. Ordina o vieni a trovarci in Via Antonello da Messina 34.">
+  <link rel="canonical" href="https://adsferruzza.com/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AD Sferruzza Pasticceria | Pasticceria artigianale a Cefalù">
+  <meta property="og:description" content="Dolci siciliani e specialità artigianali a Cefalù. Scopri i prodotti in evidenza e le recensioni.">
+  <meta property="og:url" content="https://adsferruzza.com/">
+  <meta property="og:image" content="https://adsferruzza.com/images/family-hero.jpg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AD Sferruzza Pasticceria">
+  <meta name="twitter:description" content="Pasticceria artigianale a Cefalù: dolci siciliani e specialità fresche ogni giorno.">
+  <meta name="twitter:image" content="https://adsferruzza.com/images/family-hero.jpg">
+  <meta property="og:site_name" content="AD Sferruzza Pasticceria">
+  <!-- Removed unconditional image preload to avoid downloading on small screens -->
+  <meta name="theme-color" content="#181818">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="partials.js" defer></script>
+  <!-- Structured Data retained (business, organization, website, offer catalog) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Bakery","name":"AD Sferruzza Pasticceria","image":["/images/family-hero.jpg"],"@id":"https://adsferruzza.com/#business","url":"https://adsferruzza.com/","telephone":"+39 0921 996959","servesCuisine":["Sicilian","Italian","Bakery"],"priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Via Antonello da Messina, 34","addressLocality":"Cefalù","addressRegion":"PA","postalCode":"90015","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":38.031318,"longitude":14.0171215},"sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":25},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"07:00","closes":"15:00"}]}
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://adsferruzza.com/#org","name":"AD Sferruzza Pasticceria","url":"https://adsferruzza.com/","logo":"https://adsferruzza.com/images/logo.png","sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://adsferruzza.com/#website","url":"https://adsferruzza.com/","name":"AD Sferruzza Pasticceria","publisher":{"@id":"https://adsferruzza.com/#org"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","name":"Prodotti in evidenza","itemListElement":[{"@type":"Product","name":"Ducitti","category":"Pastry","offers":{"@type":"Offer","priceCurrency":"EUR","price":"20.00","priceSpecification":{"@type":"UnitPriceSpecification","price":20,"priceCurrency":"EUR","unitText":"kg"},"availability":"https://schema.org/InStoreOnly"}},{"@type":"Product","name":"Cannoli (11 cialde con 1kg di ricotta)","category":"Pastry","offers":{"@type":"Offer","priceCurrency":"EUR","price":"28.00","availability":"https://schema.org/InStoreOnly"}},{"@type":"Product","name":"Arancini (9 pezzi)","category":"Rosticceria","offers":{"@type":"Offer","priceCurrency":"EUR","price":"28.00","availability":"https://schema.org/InStoreOnly"}}]}</script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js" defer></script>
+  <script src="firebase-config.js" defer></script>
+  <script src="firebase-init.js" defer></script>
+  <script src="gallery.js" defer></script>
+  <script src="featured.js" defer></script>
+  <script src="reviews.js" defer></script>
+  <script src="rating.js" defer></script>
+  <script src="hours.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#home" aria-label="Salta al contenuto principale"><span class="visually-hidden">Salta al contenuto</span></a>
+  <div class="confetti-bg"></div>
+  <header class="main-header" id="top" data-include="/partials/header.html"></header>
+
+  <main id="home">
+    <!-- HERO -->
+    <section class="parallax-hero hero fade-in-section visible" aria-label="Presentazione">
+      <div class="hero-media">
+        <picture>
+          <!-- Prefer modern WebP with JPG fallback -->
+          <source type="image/webp" media="(max-width: 700px)" srcset="/images/family-hero-700.webp">
+          <source type="image/webp" media="(min-width: 701px)" srcset="/images/family-hero-1400.webp">
+          <source media="(max-width: 700px)" srcset="/images/family-hero-700.jpg">
+          <source media="(min-width: 701px)" srcset="/images/family-hero-1400.jpg">
+          <img class="hero-img" src="/images/family-hero-1400.jpg" alt="Laboratorio artigianale AD Sferruzza" width="1600" height="900" decoding="async" loading="eager" fetchpriority="high">
+        </picture>
       </div>
-    </main>
-  </body>
-  </html>
+      <div class="hero-text">
+        <h1><span class="heading-underline">Pasticceria artigianale a Cefalù</span></h1>
+        <p>Dolci siciliani, pane e rosticceria creati ogni giorno con ingredienti selezionati.</p>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section id="products" class="products fade-in-section" aria-labelledby="products-title">
+      <h2 id="products-title">Prodotti in evidenza</h2>
+      <div id="featuredProducts"><div class="loading">Caricamento prodotti…</div></div>
+      <hr class="section-divider gold-gradient-divider animate-divider" />
+    </section>
+
+    <!-- ABOUT / STORY -->
+    <section id="about" class="about fade-in-section" aria-labelledby="about-title">
+      <h2 id="about-title">La Nostra Storia</h2>
+      <p>Tutto comincia con un sogno. Negli anni ’60, nostro nonno parte per gli Stati Uniti in cerca di fortuna, come tanti siciliani dell’epoca. Dopo undici anni di sacrifici e lavoro oltreoceano, torna nel suo amato paese, Castelbuono, e realizza il suo sogno: apre un bar in via Vittorio Emanuele 81, conosciuta da tutti come la “Chiazzetta”.</p>
+      <p>Quel piccolo bar diventa presto un punto di riferimento per la comunità. Negli anni successivi passa nelle mani di nostro padre e dei suoi fratelli, che lo trasformano gradualmente, aggiungendo gelati artigianali, pizze da asporto e infine, nei primi anni ’80, i primi veri prodotti dolciari.</p>
+      <p>Alessio e Davide, noi due fratelli, siamo cresciuti tra i profumi di zucchero e vaniglia, tra i forni accesi all’alba e le chiacchiere dei clienti al bancone. Abbiamo scelto di trasformare quella passione in mestiere: abbiamo studiato nelle scuole e accademie di pasticceria, facendo esperienza sia in Italia che all’estero, per portare con noi tecniche moderne e visione internazionale.</p>
+      <p>Nel 2021 nostro padre decide di intraprendere un nuovo percorso separandosi dai suoi fratelli. È da lì che nasce il nostro progetto.</p>
+      <p>Dopo anni di preparazione, sacrifici e sogni tenuti nel cuore, il 2 luglio 2025 inauguriamo finalmente la nostra pasticceria a Cefalù: un luogo che unisce la tradizione di famiglia, l’innovazione e l’amore per l’arte dolciaria.</p>
+      <p>Questa non è solo una pasticceria. È il racconto di tre generazioni, è il profumo dell’infanzia, è il gusto delle cose fatte con il cuore.</p>
+      <hr class="section-divider gold-gradient-divider animate-divider" />
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery fade-in-section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Galleria</h2>
+      <div class="gallery-grid" aria-live="polite"></div>
+      <hr class="section-divider gold-gradient-divider animate-divider" />
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviewsSection" class="reviews fade-in-section" aria-labelledby="reviews-title">
+      <h2 id="reviews-title">Recensioni dei Clienti</h2>
+      <div id="reviews" class="reviews-grid" aria-live="polite">
+        <div class="reviews-list"><p style="opacity:.75">Caricamento recensioni…</p></div>
+      </div>
+  <div class="review-cta"><a class="leave-review-btn" href="https://search.google.com/local/writereview?placeid=ChIJMfJik-07FxMRjvcULlZm3M8" target="_blank" rel="noopener noreferrer">Lascia una recensione</a></div>
+      <hr class="section-divider gold-gradient-divider animate-divider" />
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact fade-in-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contatti</h2>
+      <div class="contact-flex">
+  <div class="contact-info-card contact-panel" aria-label="Informazioni di contatto">
+          <div class="info-row"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.33 7-12A7 7 0 0 0 5 10c0 6.67 7 12 7 12Z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="info-main">Via Antonello da Messina, 34 – Cefalù (PA)</span></div>
+          <div class="info-row"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.6 12.6 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.9a16 16 0 0 0 6 6l2.24-1.27a2 2 0 0 1 2.11-.45 12.6 12.6 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><a href="tel:+390921996959" class="info-main">+39 0921 996959</a></div>
+          <div class="info-row"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" stroke="none"><path d="M27.1 4.9A15.9 15.9 0 0 0 16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2 7.9L0 32l8.4-2.2A15.9 15.9 0 0 0 16 32c8.8 0 16-7.2 16-16 0-4.3-1.7-8.3-4.9-11.1ZM16 29.3c-2.4 0-4.8-.6-6.8-1.8l-.5-.3-5 1.3 1.3-4.9-.3-.5a13.3 13.3 0 0 1-2-6.9c0-7.4 6-13.4 13.4-13.4 3.6 0 6.9 1.4 9.4 3.9a13.2 13.2 0 0 1 4 9.5c0 7.4-6 13.4-13.4 13.4Zm7.3-9.9c-.4-.2-2.3-1.1-2.6-1.3-.4-.2-.6-.2-.8.2l-1 1.3c-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-2-1.1-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8l.6-.7c.2-.3.3-.5.5-.8.2-.3.1-.5 0-.7l-1.2-2.8c-.3-.7-.5-.6-.8-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 3 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.6 5.8 5 3.4 1.3 3.4.9 4 1 .6 0 2-.8 2.3-1.6.3-.8.3-1.4.2-1.6-.1-.2-.3-.3-.7-.5Z"/></svg></span><a href="https://wa.me/393762792841" target="_blank" rel="noopener" class="info-main">WhatsApp</a></div>
+          <div class="info-row"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 4 8 8 8-8"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg></span><a href="mailto:adpasticceriasferruzza@gmail.com" class="info-main">adpasticceriasferruzza@gmail.com</a></div>
+          <div class="hours-block">
+            <div class="hours-heading"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="info-main">Orari</span></div>
+            <ul class="hours-list" aria-label="Orari di apertura">
+              <li><span>Lun</span><span>07:00–20:00</span></li>
+              <li><span>Mar</span><span>07:00–20:00</span></li>
+              <li class="closed"><span>Mer</span><span>Chiuso</span></li>
+              <li><span>Gio</span><span>07:00–20:00</span></li>
+              <li><span>Ven</span><span>07:00–20:00</span></li>
+              <li><span>Sab</span><span>07:00–20:00</span></li>
+              <li><span>Dom</span><span>07:00–15:00</span></li>
+            </ul>
+          </div>
+        </div>
+  <form class="contact-form contact-panel" action="https://formsubmit.co/adpasticceriasferruzza@gmail.com" method="POST" aria-label="Modulo contatto" netlify>
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-row"><label for="nome">Nome</label><input required id="nome" name="name" autocomplete="name"></div>
+          <div class="form-row"><label for="email">Email</label><input required id="email" name="email" type="email" autocomplete="email"></div>
+    <div class="form-row"><label for="telefono">Telefono</label><input id="telefono" name="phone" type="tel" inputmode="tel" pattern="[0-9 +()-]{6,}" autocomplete="tel" placeholder="Es. +39 333 1234567"></div>
+          <div class="form-row"><label for="messaggio">Messaggio</label><textarea required id="messaggio" name="message" rows="4"></textarea></div>
+          <button type="submit" class="submit-btn">Invia</button>
+          <div id="formStatus" class="form-status" hidden></div>
+        </form>
+      </div>
+      <div class="map-embed-home fade-in-section">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.037643388268!2d14.015!3d38.0313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1316e760edb1b1a5%3A0x0000000000000000!2sVia%20Antonello%20da%20Messina%2C%2034%2C%2090015%20Cefal%C3%B9%20PA!5e0!3m2!1sit!2sit!4v0000000000000"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-divider gold-gradient-divider animate-divider"></div>
+  <footer class="site-footer">
+    <div class="footer-watermark">
+      <img src="/images/logo.png" alt="AD Sferruzza Pasticceria" />
+    </div>
+    <p>&copy; <span id="year"></span> AD Sferruzza Pasticceria. Tutti i diritti riservati. <a href="/privacy.html">Privacy</a></p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- WhatsApp Floating Button (reuse) -->
+  <a href="https://wa.me/393762792841?text=Ciao%20AD%20Sferruzza!%20Vorrei%20chiedere%20informazioni%20su..." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chatta su WhatsApp" title="Chatta su WhatsApp">
+    <img src="images/icons/whatsapp.svg" width="28" height="28" alt="" />
+  </a>
+  <div class="whatsapp-label"><a href="https://wa.me/393762792841" target="_blank" rel="noopener">Chatta su WhatsApp</a></div>
+  <script>
+    // Evidenzia il giorno odierno nella lista orari (homepage)
+    (function(){
+      const hoursList = document.querySelector('#contact .hours-list');
+      if(!hoursList) return;
+      const today = new Date().getDay(); // 0=Dom
+      const map = {0:'Dom',1:'Lun',2:'Mar',3:'Mer',4:'Gio',5:'Ven',6:'Sab'};
+      const label = map[today];
+      hoursList.querySelectorAll('li').forEach(li=>{
+        const day = li.firstElementChild?.textContent?.trim();
+        if(day===label){ li.classList.add('today'); }
+      });
+    })();
+  </script>
+</body>
+</html>
