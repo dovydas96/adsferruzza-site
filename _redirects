@@ -10,3 +10,7 @@
 # Pretty path for blog post without .html
 /blog-post	/blog-post.html	301
 /blog-post/	/blog-post.html	301
+
+# Ensure blog index works without extension or with trailing slash
+/blog	/blog.html	301
+/blog/	/blog.html	301
