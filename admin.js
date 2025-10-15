@@ -80,10 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const postSeoDescription = document.getElementById('postSeoDescription');
   const postOgImage = document.getElementById('postOgImage');
   const btnPublishPost = document.getElementById('btnPublishPost');
+  const btnCancelEdit = document.getElementById('btnCancelEdit');
   const postStatus = document.getElementById('postStatus');
+  const editImageHint = document.getElementById('editImageHint');
   const btnRefreshPosts = document.getElementById('btnRefreshPosts');
   const postManageStatus = document.getElementById('postManageStatus');
   const postList = document.getElementById('postList');
+  let editingPostId = null; // holds slug when editing
 
   function slugify(t) {
     return t.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
@@ -94,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const title = postTitle.value.trim();
       if (!title) throw new Error('Titolo richiesto');
-      const slug = slugify(title);
+      const slug = editingPostId || slugify(title);
       const date = (postDate.value || new Date().toISOString().slice(0,10));
       const readTime = Math.max(1, parseInt(postReadTime.value || '3', 10));
       const excerpt = postExcerpt.value.trim();
@@ -127,22 +130,48 @@ document.addEventListener('DOMContentLoaded', async () => {
       const seoTitle = (postSeoTitle?.value || '').trim();
       const seoDescription = (postSeoDescription?.value || '').trim();
       const payload = {
-        slug, title, date, readTime, image: imageUrl, excerpt, content: contentParas
+        slug, title, date, readTime, excerpt, content: contentParas
       };
+      // when creating or if new image uploaded, set image
+      if (imageUrl) payload.image = imageUrl;
       if (seoTitle) payload.seoTitle = seoTitle;
       if (seoDescription) payload.seoDescription = seoDescription;
       if (ogImageUrl) payload.ogImage = ogImageUrl;
 
       await db.collection('posts').doc(slug).set(payload, { merge: true });
 
-      setStatus(postStatus, 'Articolo pubblicato!');
-  postTitle.value = ''; postExcerpt.value = ''; postReadTime.value = '3'; postDate.value = ''; postContent.value = ''; postImage.value='';
-  if (postSeoTitle) postSeoTitle.value = '';
-  if (postSeoDescription) postSeoDescription.value = '';
-  if (postOgImage) postOgImage.value = '';
+      if (editingPostId) {
+        setStatus(postStatus, 'Articolo aggiornato!');
+      } else {
+        setStatus(postStatus, 'Articolo pubblicato!');
+      }
+      // reset form and edit state
+      clearPostForm();
+      await loadPostList();
     } catch (e) {
       setStatus(postStatus, 'Errore: ' + e.message);
     }
+  });
+
+  function clearPostForm() {
+    editingPostId = null;
+    if (btnCancelEdit) btnCancelEdit.classList.add('hidden');
+    if (editImageHint) editImageHint.classList.add('hidden');
+    if (btnPublishPost) btnPublishPost.textContent = 'Pubblica';
+    postTitle.value = '';
+    postExcerpt.value = '';
+    postReadTime.value = '3';
+    postDate.value = '';
+    postContent.value = '';
+    postImage.value = '';
+    if (postSeoTitle) postSeoTitle.value = '';
+    if (postSeoDescription) postSeoDescription.value = '';
+    if (postOgImage) postOgImage.value = '';
+  }
+
+  if (btnCancelEdit) btnCancelEdit.addEventListener('click', () => {
+    clearPostForm();
+    setStatus(postStatus, 'Modifica annullata');
   });
 
   // --- Post Manager: list & delete ---
@@ -170,6 +199,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               <div style="opacity:.75;font-size:.9rem;">${it.date || ''} · ${it.readTime ? `${it.readTime} min` : ''}</div>
             </div>
             <div style="display:flex;gap:8px;">
+              <button class="admin-btn" data-action="edit-post" data-id="${it.id}">Modifica</button>
               <button class="admin-btn" data-action="delete-post" data-id="${it.id}" data-image="${it.image || ''}">Elimina</button>
             </div>
           </div>
@@ -202,12 +232,41 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (btnRefreshPosts) btnRefreshPosts.addEventListener('click', loadPostList);
-  if (postList) postList.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('button[data-action="delete-post"]');
-    if (!btn) return;
-    const id = btn.getAttribute('data-id');
-    const image = btn.getAttribute('data-image');
-    if (confirm(`Eliminare l'articolo "${id}"?`)) deletePost(id, image);
+  if (postList) postList.addEventListener('click', async (ev) => {
+    const delBtn = ev.target.closest('button[data-action="delete-post"]');
+    const editBtn = ev.target.closest('button[data-action="edit-post"]');
+    if (delBtn) {
+      const id = delBtn.getAttribute('data-id');
+      const image = delBtn.getAttribute('data-image');
+      if (confirm(`Eliminare l'articolo "${id}"?`)) deletePost(id, image);
+      return;
+    }
+    if (editBtn) {
+      const id = editBtn.getAttribute('data-id');
+      try {
+        const doc = await db.collection('posts').doc(id).get();
+        if (!doc.exists) throw new Error('Articolo non trovato');
+        const data = doc.data() || {};
+        editingPostId = id;
+        postTitle.value = data.title || '';
+        postExcerpt.value = data.excerpt || '';
+        postReadTime.value = data.readTime || '3';
+        postDate.value = data.date || '';
+        postContent.value = Array.isArray(data.content) ? data.content.join('\n\n') : (data.content || '');
+        if (postSeoTitle) postSeoTitle.value = data.seoTitle || '';
+        if (postSeoDescription) postSeoDescription.value = data.seoDescription || '';
+        // clear file inputs and show hint
+        postImage.value = '';
+        if (postOgImage) postOgImage.value = '';
+        if (btnPublishPost) btnPublishPost.textContent = 'Aggiorna';
+        if (btnCancelEdit) btnCancelEdit.classList.remove('hidden');
+        if (editImageHint) editImageHint.classList.remove('hidden');
+        window.scrollTo({ top: postCard.offsetTop - 20, behavior: 'smooth' });
+        setStatus(postStatus, `Modifica: ${id}`);
+      } catch (e) {
+        setStatus(postManageStatus, 'Errore apertura modifica: ' + e.message);
+      }
+    }
   });
 
   auth.onAuthStateChanged((u) => { if (u) loadPostList(); });

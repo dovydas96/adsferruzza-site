@@ -395,7 +395,8 @@ h1, h2, h3, h4, h5, h6, .logo {
 .blog-readmore,
 .gallery-prev, .gallery-next,
 .cta-phones a,
-.call-btn, .whatsapp-btn {
+.call-btn, .whatsapp-btn,
+.button-link, .post-cta-links a, .blog-cta-links a {
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: #232323;
   font-weight: bold;
@@ -411,7 +412,7 @@ h1, h2, h3, h4, h5, h6, .logo {
   z-index: 1;
 }
 /* Ensure anchor CTAs render like buttons */
-.leave-review-btn, .blog-readmore, .cta-phones a { display: inline-block; text-decoration: none; }
+.leave-review-btn, .blog-readmore, .cta-phones a, .button-link, .post-cta-links a, .blog-cta-links a { display: inline-block; text-decoration: none; pointer-events: auto; }
 .submit-btn .ripple, .leave-review-btn .ripple, .blog-readmore .ripple, .gallery-prev .ripple, .gallery-next .ripple, .cta-phones a .ripple, .call-btn .ripple, .whatsapp-btn .ripple {
   position: absolute;
   border-radius: 50%;
@@ -427,7 +428,7 @@ h1, h2, h3, h4, h5, h6, .logo {
     opacity: 0;
   }
 }
-.submit-btn:hover, .leave-review-btn:hover, .blog-readmore:hover, .gallery-prev:hover, .gallery-next:hover, .cta-phones a:hover, .call-btn:hover, .whatsapp-btn:hover {
+.submit-btn:hover, .leave-review-btn:hover, .blog-readmore:hover, .gallery-prev:hover, .gallery-next:hover, .cta-phones a:hover, .call-btn:hover, .whatsapp-btn:hover, .button-link:hover, .post-cta-links a:hover, .blog-cta-links a:hover {
   background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 100%);
   color: #fff;
   transform: translateY(-2px) scale(1.04);
@@ -1064,6 +1065,9 @@ footer {
 .post-content a { color: var(--accent); text-decoration: underline; }
 
 @media (max-width: 680px) {
+  /* Blog index: single column on small screens */
+  .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .blog-thumb img { height: 160px; }
   .post-body { padding-bottom: 2.5rem; }
   .post-content { font-size: 1rem; }
 }

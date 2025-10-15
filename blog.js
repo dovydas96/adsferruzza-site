@@ -29,6 +29,94 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch { return iso; }
   }
 
+  // --- Content rendering helpers (headings, links, lists) ---
+  const esc = (s='') => String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+  const slugify = (t='') => t.toLowerCase().trim()
+    .replace(/[^a-z0-9\s-]/gi, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+  function formatInline(text) {
+    if (!text) return '';
+    const tokens = [];
+    let working = String(text);
+    // 1) Markdown links [label](url)
+    working = working.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/gi, (_m, label, url) => {
+      const token = `__LINK_${tokens.length}__`;
+      tokens.push({ token, html: `<a href=\"${esc(url)}\" target=\"_blank\" rel=\"noopener noreferrer\">${esc(label)}</a>` });
+      return token;
+    });
+    // 2) Bold first: **text**
+    working = working.replace(/\*\*([^*]+)\*\*/g, (_m, inner) => {
+      const token = `__B_${tokens.length}__`;
+      tokens.push({ token, html: `<strong>${esc(inner)}</strong>` });
+      return token;
+    });
+    // 3) Italic: *text*
+    working = working.replace(/(^|\s)\*([^*]+)\*(?=\s|$)/g, (_m, pre, inner) => {
+      const token = `__I_${tokens.length}__`;
+      tokens.push({ token, html: `${pre}<em>${esc(inner)}</em>` });
+      return token;
+    });
+    // Escape the rest
+    let safe = esc(working);
+  // 4) Auto-link bare URLs (http/https)
+  safe = safe.replace(/(https?:\/\/[^\s<]+)(?![^<]*>)/g, (m) => `<a href=\"${m}\" target=\"_blank\" rel=\"noopener noreferrer\">${m}</a>`);
+  // 4b) Auto-link www.* (prepend https)
+  safe = safe.replace(/(^|\s)(www\.[^\s<]+)(?![^<]*>)/g, (_m, pre, url) => `${pre}<a href=\"https://${url}\" target=\"_blank\" rel=\"noopener noreferrer\">${url}</a>`);
+    // 5) Restore tokens
+    for (const { token, html } of tokens) {
+      safe = safe.replace(new RegExp(token, 'g'), html);
+    }
+    return safe;
+  }
+  function renderParagraph(raw) {
+    if (!raw) return '';
+    const text = String(raw).trim();
+    // Treat common section labels as headings
+  const isIntro = /^(introduzione|introduction):?$/i.test(text);
+  const isConclusion = /^(conclusione|conclusion):?$/i.test(text);
+    const hMatch = text.match(/^(#{1,6})\s+(.+)$/); // Markdown-style heading
+    if (isIntro || isConclusion) {
+      const label = text.charAt(0).toUpperCase() + text.slice(1);
+      const id = slugify(label);
+      return `<h2 id="${id}">${esc(label)}</h2>`;
+    }
+    if (hMatch) {
+      const level = hMatch[1].length;
+      const body = hMatch[2].trim();
+      const id = slugify(body);
+      // Ensure only one H1 per page: downgrade # to H2, ###→H3
+      const tag = level <= 2 ? 'h2' : 'h3';
+      return `<${tag} id="${id}">${esc(body)}</${tag}>`;
+    }
+    // Ordered list: lines beginning with "1. ", "2. ", etc.
+    if (/^\d+\.\s+/m.test(text)) {
+      const lines = text.split(/\n/).map(l => l.trim()).filter(Boolean);
+      const items = lines.filter(l => /^\d+\.\s+/.test(l)).map(l => l.replace(/^\d+\.\s+/, ''));
+      if (items.length >= 2) {
+        const li = items.map(t => `<li>${formatInline(t)}</li>`).join('');
+        return `<ol>${li}</ol>`;
+      }
+    }
+    // Bullet list: lines starting with "- "
+    if (/^-\s+/m.test(text)) {
+      const lines = text.split(/\n/).map(l => l.trim()).filter(Boolean);
+      const items = lines.filter(l => /^-\s+/.test(l)).map(l => l.replace(/^-\s+/, ''));
+      if (items.length >= 2) {
+        const li = items.map(t => `<li>${formatInline(t)}</li>`).join('');
+        return `<ul>${li}</ul>`;
+      }
+    }
+    // Preserve single newlines as <br> within the paragraph
+    const withBreaks = formatInline(text).replace(/\n/g, '<br>');
+    return `<p>${withBreaks}</p>`;
+  }
+
   if (!isPostPage && grid) {
     // Feature flag: hide blogs entirely if disabled
     if (window.BLOGS_ENABLED === false) {
@@ -108,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   imgEl.alt = post.title;
   imgEl.loading = 'eager'; // hero image should load ASAP
   imgEl.decoding = 'async';
-      contentEl.innerHTML = post.content.map(p => `<p>${p}</p>`).join('');
+  contentEl.innerHTML = (post.content || []).map(renderParagraph).join('');
       crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${post.title}`;
   // Compute preferred SEO title/description values with graceful fallback
   const truncate = (s, n=160) => (s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + '…');
@@ -164,7 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         '@type': 'Article',
         headline: post.title,
         description: desc,
-  image: ogImage?.startsWith('http') ? ogImage : `https://adsferruzza.com/${(ogImage || '').replace(/^\/?/, '')}`,
+  image: absImage,
         author: { '@type': 'Organization', name: 'AD Sferruzza Pasticceria' },
         datePublished: post.date,
         dateModified: post.updatedAt || post.date,

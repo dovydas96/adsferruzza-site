@@ -82,11 +82,18 @@
       </div>
       <label>Contenuto (paragrafi, separati da una riga vuota)</label>
       <textarea id="postContent" rows="8"></textarea>
+      <div class="notice" style="margin-top:.4rem;">
+        Suggerimenti formattazione: usa righe vuote per separare i paragrafi. Intestazioni: "## Sezione" (H2), "### Sottosezione" (H3). Link: [testo](https://esempio.it) o incolla URL completo. Elenchi: righe che iniziano con "- " o "1. ".
+      </div>
       <label>Immagine di copertina</label>
       <input type="file" id="postImage" accept="image/*">
       <label>Immagine Social (OG/Twitter) – opzionale</label>
       <input type="file" id="postOgImage" accept="image/*">
-      <button class="admin-btn" id="btnPublishPost">Pubblica</button>
+      <p id="editImageHint" class="notice hidden" style="margin-top:.5rem;">Modalità modifica: lascia i campi immagine vuoti per mantenere quelle attuali.</p>
+      <div class="row" style="margin-top:.5rem;gap:.6rem;align-items:center;">
+        <button class="admin-btn" id="btnPublishPost">Pubblica</button>
+        <button class="admin-btn hidden" id="btnCancelEdit" type="button" title="Annulla modifica">Annulla modifica</button>
+      </div>
       <p id="postStatus" class="notice hidden"></p>
     </div>
 
@@ -94,7 +101,7 @@
       <h2>Gestisci Articoli</h2>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:.5rem;">
         <button class="admin-btn" id="btnRefreshPosts">Aggiorna elenco</button>
-        <span style="opacity:.8;">Elenco e cancellazione</span>
+        <span style="opacity:.8;">Elenco, modifica e cancellazione</span>
       </div>
       <p id="postManageStatus" class="notice hidden"></p>
       <div id="postList"></div>
