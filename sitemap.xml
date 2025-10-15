@@ -10,6 +10,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Blog posts -->
+  <url>
+    <loc>https://adsferruzza.com/blog-post.html?slug=torta-frutti-di-bosco</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adsferruzza.com/blog-post.html?slug=segreti-cannolo-perfetto</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adsferruzza.com/blog-post.html?slug=arancini-tradizione-gusto</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://adsferruzza.com/gallery.html</loc>
     <changefreq>weekly</changefreq>

@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://adsferruzza.com/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
   <meta property="og:title" content="AD Sferruzza Pasticceria | Pasticceria artigianale a Cefalù">
   <meta property="og:description" content="Dolci siciliani e specialità artigianali a Cefalù. Scopri i prodotti in evidenza e le recensioni.">
   <meta property="og:url" content="https://adsferruzza.com/">
@@ -32,9 +33,9 @@
   <script src="partials.js" defer></script>
   <!-- Structured Data retained (business, organization, website, offer catalog) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Bakery","name":"AD Sferruzza Pasticceria","image":["/images/family-hero.jpg"],"@id":"https://adsferruzza.com/#business","url":"https://adsferruzza.com/","telephone":"+39 0921 996959","servesCuisine":["Sicilian","Italian","Bakery"],"priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Via Antonello da Messina, 34","addressLocality":"Cefalù","addressRegion":"PA","postalCode":"90015","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":38.031318,"longitude":14.0171215},"sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":25},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"07:00","closes":"15:00"}]}
+  {"@context":"https://schema.org","@type":"Bakery","name":"AD Sferruzza Pasticceria","image":["/images/family-hero.jpg"],"@id":"https://adsferruzza.com/#business","url":"https://adsferruzza.com/","telephone":"+39 0921 996959","servesCuisine":["Sicilian","Italian","Bakery"],"priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Via Antonello da Messina, 34","addressLocality":"Cefalù","addressRegion":"PA","postalCode":"90015","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":38.031318,"longitude":14.0171215},"sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria","https://www.tripadvisor.it/Restaurant_Review-g25433221-d33927831-Reviews-AD_Sferruzza_Pasticceria-Cefalu_City_Cefalu_Province_of_Palermo_Sicily.html?m=69573","https://www.google.com/maps?q=place_id:ChIJMfJik-07FxMRjvcULlZm3M8"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":25},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"07:00","closes":"15:00"}]}
   </script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://adsferruzza.com/#org","name":"AD Sferruzza Pasticceria","url":"https://adsferruzza.com/","logo":"https://adsferruzza.com/images/logo.png","sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://adsferruzza.com/#org","name":"AD Sferruzza Pasticceria","url":"https://adsferruzza.com/","logo":"https://adsferruzza.com/images/logo.png","sameAs":["https://www.instagram.com/ad_sferruzza_pasticceria/","https://www.facebook.com/p/AD-Sferruzza-Pasticceria-61573963886790/","https://www.tiktok.com/@ad_sferruzza_pasticceria","https://www.tripadvisor.it/Restaurant_Review-g25433221-d33927831-Reviews-AD_Sferruzza_Pasticceria-Cefalu_City_Cefalu_Province_of_Palermo_Sicily.html?m=69573","https://www.google.com/maps?q=place_id:ChIJMfJik-07FxMRjvcULlZm3M8"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://adsferruzza.com/#website","url":"https://adsferruzza.com/","name":"AD Sferruzza Pasticceria","publisher":{"@id":"https://adsferruzza.com/#org"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","name":"Prodotti in evidenza","itemListElement":[{"@type":"Product","name":"Ducitti","category":"Pastry","offers":{"@type":"Offer","priceCurrency":"EUR","price":"20.00","priceSpecification":{"@type":"UnitPriceSpecification","price":20,"priceCurrency":"EUR","unitText":"kg"},"availability":"https://schema.org/InStoreOnly"}},{"@type":"Product","name":"Cannoli (11 cialde con 1kg di ricotta)","category":"Pastry","offers":{"@type":"Offer","priceCurrency":"EUR","price":"28.00","availability":"https://schema.org/InStoreOnly"}},{"@type":"Product","name":"Arancini (9 pezzi)","category":"Rosticceria","offers":{"@type":"Offer","priceCurrency":"EUR","price":"28.00","availability":"https://schema.org/InStoreOnly"}}]}</script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
@@ -76,6 +77,10 @@
     <section id="products" class="products fade-in-section" aria-labelledby="products-title">
       <h2 id="products-title">Prodotti in evidenza</h2>
       <div id="featuredProducts"><div class="loading">Caricamento prodotti…</div></div>
+      <div class="section-cta" style="text-align:center; margin: 1rem 0 0.5rem;">
+        <a href="/contact.html" class="button-link" style="margin:.25rem .5rem;">Ordina o chiedi informazioni</a>
+        <a href="/blog.html" class="button-link" style="margin:.25rem .5rem;">Leggi il nostro blog</a>
+      </div>
       <hr class="section-divider gold-gradient-divider animate-divider" />
     </section>
 
@@ -88,6 +93,9 @@
       <p>Nel 2021 nostro padre decide di intraprendere un nuovo percorso separandosi dai suoi fratelli. È da lì che nasce il nostro progetto.</p>
       <p>Dopo anni di preparazione, sacrifici e sogni tenuti nel cuore, il 2 luglio 2025 inauguriamo finalmente la nostra pasticceria a Cefalù: un luogo che unisce la tradizione di famiglia, l’innovazione e l’amore per l’arte dolciaria.</p>
       <p>Questa non è solo una pasticceria. È il racconto di tre generazioni, è il profumo dell’infanzia, è il gusto delle cose fatte con il cuore.</p>
+      <div class="section-cta" style="text-align:center; margin: .5rem 0 0.5rem;">
+        <a href="/blog.html" class="button-link" style="margin:.25rem .5rem;">Leggi altre storie e ricette</a>
+      </div>
       <hr class="section-divider gold-gradient-divider animate-divider" />
     </section>
 
@@ -95,6 +103,9 @@
     <section id="gallery" class="gallery fade-in-section" aria-labelledby="gallery-title">
       <h2 id="gallery-title">Galleria</h2>
       <div class="gallery-grid" aria-live="polite"></div>
+      <div class="section-cta" style="text-align:center; margin: 1rem 0 0.5rem;">
+        <a href="/contact.html" class="button-link" style="margin:.25rem .5rem;">Richiedi un preventivo</a>
+      </div>
       <hr class="section-divider gold-gradient-divider animate-divider" />
     </section>
 

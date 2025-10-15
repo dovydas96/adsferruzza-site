@@ -57,6 +57,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>`;
         grid.appendChild(art);
       });
+
+      // Add a lightweight CTA block under the list to guide users internally
+      const cta = document.createElement('div');
+      cta.className = 'blog-cta-links';
+      cta.innerHTML = `
+        <hr class="section-divider gold-gradient-divider" />
+        <p style="text-align:center; margin:1rem 0 0.25rem; opacity:.9">Ti è piaciuto leggere? Scopri i nostri prodotti o contattaci per ordini.</p>
+        <p style="text-align:center; gap:.75rem; display:flex; justify-content:center; flex-wrap:wrap; margin:.25rem 0 1.5rem;">
+          <a href="/#products" class="button-link">Vai ai prodotti</a>
+          <a href="/contact.html" class="button-link">Contattaci</a>
+        </p>`;
+      grid.parentElement.appendChild(cta);
     } catch (e) {
       grid.innerHTML = '<p>Errore nel caricamento dei post. Riprova più tardi.</p>';
       console.error(e);
@@ -91,13 +103,145 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (!post) throw new Error('Post non trovato');
       titleEl.textContent = post.title;
       metaEl.textContent = `${formatDate(post.date)} · ${post.readTime} min`;
-  imgEl.src = post.image;
+  // Use post hero image or a sensible fallback
+  imgEl.src = post.image || 'images/family-hero.jpg';
   imgEl.alt = post.title;
   imgEl.loading = 'eager'; // hero image should load ASAP
   imgEl.decoding = 'async';
       contentEl.innerHTML = post.content.map(p => `<p>${p}</p>`).join('');
       crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${post.title}`;
       document.title = `${post.title} | AD Sferruzza Pasticceria`;
+
+      // --- Dynamic SEO tags: description, canonical, OG/Twitter ---
+      const ensureMeta = (selector, attrs) => {
+        let el = document.head.querySelector(selector);
+        if (!el) {
+          el = document.createElement('meta');
+          Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,v));
+          document.head.appendChild(el);
+        }
+        return el;
+      };
+      const ensureLink = (rel, href) => {
+        let link = document.head.querySelector(`link[rel="${rel}"]`);
+        if (!link) { link = document.createElement('link'); link.setAttribute('rel', rel); document.head.appendChild(link); }
+        link.setAttribute('href', href);
+        return link;
+      };
+      const truncate = (s, n=160) => (s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + '…');
+      // Preferred description: explicit excerpt; fallback to first paragraphs
+      const fallbackText = Array.isArray(post.content) ? post.content.join(' ') : '';
+      const desc = truncate(String(post.excerpt || fallbackText || '').trim());
+      // Canonical absolute URL using production host
+      const canonicalUrl = `https://adsferruzza.com/blog-post.html?slug=${encodeURIComponent(post.slug)}`;
+      ensureLink('canonical', canonicalUrl);
+      // Meta description
+      let mDesc = document.head.querySelector('meta[name="description"]');
+      if (!mDesc) { mDesc = document.createElement('meta'); mDesc.setAttribute('name','description'); document.head.appendChild(mDesc); }
+      mDesc.setAttribute('content', desc || 'Articolo del blog di AD Sferruzza Pasticceria.');
+      // Open Graph
+      ensureMeta('meta[property="og:type"]', { property:'og:type', content:'article' }).setAttribute('content','article');
+      ensureMeta('meta[property="og:title"]', { property:'og:title' }).setAttribute('content', `${post.title} | AD Sferruzza Pasticceria`);
+      ensureMeta('meta[property="og:description"]', { property:'og:description' }).setAttribute('content', desc);
+      ensureMeta('meta[property="og:url"]', { property:'og:url' }).setAttribute('content', canonicalUrl);
+      const defaultOg = 'https://adsferruzza.com/images/family-hero.jpg';
+      const absImage = post.image
+        ? (post.image.startsWith('http') ? post.image : `https://adsferruzza.com/${post.image.replace(/^\/?/, '')}`)
+        : defaultOg;
+      ensureMeta('meta[property="og:image"]', { property:'og:image' }).setAttribute('content', absImage);
+      // Twitter Card
+      ensureMeta('meta[name="twitter:card"]', { name:'twitter:card' }).setAttribute('content','summary_large_image');
+      ensureMeta('meta[name="twitter:title"]', { name:'twitter:title' }).setAttribute('content', `${post.title} | AD Sferruzza Pasticceria`);
+      ensureMeta('meta[name="twitter:description"]', { name:'twitter:description' }).setAttribute('content', desc);
+  ensureMeta('meta[name="twitter:image"]', { name:'twitter:image' }).setAttribute('content', absImage);
+
+      // --- JSON-LD: Article and BreadcrumbList ---
+      const articleLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: desc,
+        image: post.image?.startsWith('http') ? post.image : `https://adsferruzza.com/${post.image.replace(/^\/?/, '')}`,
+        author: { '@type': 'Organization', name: 'AD Sferruzza Pasticceria' },
+        datePublished: post.date,
+        dateModified: post.updatedAt || post.date,
+        mainEntityOfPage: canonicalUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: 'AD Sferruzza Pasticceria',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://adsferruzza.com/images/icons/logo-512.png'
+          }
+        }
+      };
+      const breadcrumbLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://adsferruzza.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://adsferruzza.com/blog.html' },
+          { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl }
+        ]
+      };
+      const injectLd = (id, obj) => {
+        let tag = document.getElementById(id);
+        if (!tag) {
+          tag = document.createElement('script');
+          tag.type = 'application/ld+json';
+          tag.id = id;
+          document.head.appendChild(tag);
+        }
+        tag.textContent = JSON.stringify(obj);
+      };
+      injectLd('ld-article', articleLd);
+      injectLd('ld-breadcrumb', breadcrumbLd);
+
+      // --- Internal linking: CTA and Related Posts ---
+      try {
+        // CTA links under the article body
+        const postBody = document.querySelector('.post-body');
+        if (postBody) {
+          const ctaWrap = document.createElement('div');
+          ctaWrap.className = 'post-cta-links';
+          ctaWrap.innerHTML = `
+            <hr class="section-divider gold-gradient-divider" />
+            <div style="text-align:center; margin:1rem 0 0.25rem; opacity:.95">Vuoi saperne di più o fare un ordine?</div>
+            <p style="text-align:center; gap:.75rem; display:flex; justify-content:center; flex-wrap:wrap; margin:.25rem 0 1.5rem;">
+              <a href="/blog.html" class="button-link">Torna al Blog</a>
+              <a href="/#products" class="button-link">Scopri i Prodotti</a>
+              <a href="/contact.html" class="button-link">Contattaci</a>
+            </p>`;
+          postBody.appendChild(ctaWrap);
+        }
+
+        // Related posts (pick up to 2 others by recency)
+        const others = (posts || []).filter(p => p.slug !== post.slug)
+          .sort((a,b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 2);
+        if (others.length && postBody) {
+          const rel = document.createElement('section');
+          rel.className = 'related-posts fade-in-section visible';
+          rel.innerHTML = `
+            <h3 style="text-align:center; margin-top:0.5rem;">Potrebbe interessarti anche</h3>
+            <div class="related-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin:1rem 0 1.5rem;">
+              ${others.map(o => `
+                <article class="related-card" style="background:#1f1f1f; border:1px solid rgba(255,226,161,.25); border-radius:12px; overflow:hidden;">
+                  <a href="/blog-post.html?slug=${encodeURIComponent(o.slug)}" class="related-thumb" style="display:block;">
+                    <img src="${o.image}" alt="${o.title}" loading="lazy" decoding="async" style="width:100%; height:180px; object-fit:cover; display:block;" />
+                  </a>
+                  <div class="related-content" style="padding:.75rem 1rem 1rem;">
+                    <h4 style="margin:.25rem 0 .25rem; font-size:1.05rem;"><a href="/blog-post.html?slug=${encodeURIComponent(o.slug)}">${o.title}</a></h4>
+                    <p style="opacity:.8; margin:0 0 .5rem; font-size:.9rem;">${formatDate(o.date)} · ${o.readTime} min</p>
+                    <p style="opacity:.85; margin:0; font-size:.95rem;">${o.excerpt}</p>
+                  </div>
+                </article>`).join('')}
+            </div>`;
+          postBody.appendChild(rel);
+        }
+      } catch (err) {
+        console.warn('Internal linking widgets skipped:', err);
+      }
     } catch (e) {
       contentEl.innerHTML = '<p>Impossibile caricare il contenuto.</p>';
       console.error(e);
