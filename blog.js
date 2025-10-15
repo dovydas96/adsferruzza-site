@@ -3,24 +3,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const isPostPage = document.getElementById('postContainer') !== null;
 
   async function loadPosts() {
-    // If Firebase is configured, load from Firestore
-    try {
-      if (window.FIREBASE_ENABLED && window.firebase && firebase.apps.length) {
+    // Only use Firebase for blog data
+    if (window.FIREBASE_ENABLED && window.firebase && firebase.apps.length) {
+      try {
         const db = firebase.firestore();
         const snap = await db.collection('posts').orderBy('date', 'desc').get();
         const posts = snap.docs.map(d => d.data());
         if (posts.length) return posts;
+        throw new Error('Nessun articolo trovato in Firebase.');
+      } catch(e) {
+        throw new Error('Errore caricamento articoli da Firebase: ' + e.message);
       }
-    } catch(e) {
-      console.warn('Firebase posts fallback:', e.message);
+    } else {
+      throw new Error('Firebase non è configurato o non disponibile.');
     }
-  // Fallback to local JSON (use absolute path to be robust under redirects)
-  const jsonPath = (location.protocol === 'file:' ? './blogdata/posts.json' : '/blogdata/posts.json');
-  const res = await fetch(jsonPath, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Impossibile caricare i post');
-    const posts = await res.json();
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return posts;
   }
 
   function formatDate(iso) {
