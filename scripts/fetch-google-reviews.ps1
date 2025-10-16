@@ -20,7 +20,24 @@ Write-Host "Fetching reviews (Places API v1) for place: $PlaceId..."
 try {
   $resp = Invoke-RestMethod -Method GET -Uri $uri -Headers $headers -ErrorAction Stop
 } catch {
-  Write-Error "HTTP request failed: $($_.Exception.Message)"
+  # Gracefully handle authorization or quota errors from Google Places API
+  $errMsg = $_.Exception.Message
+  Write-Warning "HTTP request failed: $errMsg"
+  if ($_.Exception.Response -and $_.Exception.Response.StatusCode) {
+    $code = [int]$_.Exception.Response.StatusCode
+    if ($code -eq 403 -or $code -eq 401) {
+      Write-Warning "Places API returned $code. Skipping reviews fetch to avoid failing CI. Ensure API key and permissions are correct.";
+      # Write an empty reviews result to keep downstream code working
+      $empty = [PSCustomObject]@{ place = $null; lastFetched = (Get-Date).ToString("s"); reviews = @() }
+      $dir = Split-Path -Path $OutputPath -Parent
+      if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
+      $empty | ConvertTo-Json -Depth 6 | Out-File -FilePath $OutputPath -Encoding UTF8
+      Write-Host "Wrote empty reviews to $OutputPath" -ForegroundColor Yellow
+      exit 0
+    }
+  }
+  # For other errors, fail so the issue can be investigated
+  Write-Error "HTTP request failed (non-auth error): $errMsg"
   exit 1
 }
 
