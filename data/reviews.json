@@ -3,20 +3,86 @@
                   "name":  "AD Sferruzza Pasticceria",
                   "place_id":  "ChIJMfJik-07FxMRjvcULlZm3M8",
                   "rating":  5,
-                  "user_ratings_total":  25,
-                  "url":  "https://maps.google.com/?cid=14977958981053773710\u0026g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                  "user_ratings_total":  26,
+                  "url":  "https://maps.google.com/?cid=14977958981053773710",
+                  "regularOpeningHours":  {
+                                              "open_now":  true,
+                                              "periods":  [
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  0,
+                                                                                "time":  "1500"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  0,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              },
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  1,
+                                                                                "time":  "2000"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  1,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              },
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  2,
+                                                                                "time":  "2000"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  2,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              },
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  4,
+                                                                                "time":  "2000"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  4,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              },
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  5,
+                                                                                "time":  "2000"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  5,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              },
+                                                              {
+                                                                  "close":  {
+                                                                                "day":  6,
+                                                                                "time":  "2000"
+                                                                            },
+                                                                  "open":  {
+                                                                               "day":  6,
+                                                                               "time":  "0700"
+                                                                           }
+                                                              }
+                                                          ],
+                                              "weekday_text":  [
+                                                                   "lunedì: 07:00–20:00",
+                                                                   "martedì: 07:00–20:00",
+                                                                   "mercoledì: Chiuso",
+                                                                   "giovedì: 07:00–20:00",
+                                                                   "venerdì: 07:00–20:00",
+                                                                   "sabato: 07:00–20:00",
+                                                                   "domenica: 07:00–15:00"
+                                                               ]
+                                          },
+                  "specialOpeningHours":  null
               },
-    "lastFetched":  "2025-10-12T14:17:10",
+    "lastFetched":  "2025-10-16T10:40:41",
     "reviews":  [
-                    {
-                        "author_name":  "Letizia Cordio",
-                        "rating":  5,
-                        "text":  "A 10 minuti dalla spiaggia, una pasticceria dove poter gustare sapori autentici. La viennoiserie da colazione semplicemente sublime, sfogliatura top, gusto delicato e creme di farcitura di ottima qualità (ho particolarmente apprezzato la girella con l\u0027uvetta❤️) .\nHo anche assaggiato:\n-babà (rigorosamente artigianale e non i soliti industriali);\n-Ecleire al cioccolato (super ripieni di crema al cioccolato)\n-una mini quiche salata ( non ho saputo resistere e ne è valsa la pena🥹)\nInoltre ho trovato personale molto gentile e competente che non solo mi ha saputo consigliare,ma mi ha anche raccontato il prodotto, dalla scelta delle materie prime alla sua realizzazione, è qui che si vede tutta la passione che c\u0027 è dietro!\nNon vedo l\u0027ora di tornare e assaggiare pane, tavola calda e tutto il resto della pasticceria mignon!",
-                        "relative_time_description":  "un mese fa",
-                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocJMPUaFR3xms8DW5AUKBxJ8BEGtwSb79AMwlFhoCJz1pT82WA=s128-c0x00000000-cc-rp-mo",
-                        "time":  1756284709,
-                        "language":  "it"
-                    },
                     {
                         "author_name":  "Rodolfo Valentino",
                         "rating":  5,
@@ -27,12 +93,21 @@
                         "language":  "it"
                     },
                     {
-                        "author_name":  "Matteo Allegra",
+                        "author_name":  "Letizia Cordio",
                         "rating":  5,
-                        "text":  "Preso lì e portato in spiaggia a piedi. Giusto 10 minuti. Ne valgono la pena per non cadere nelle trappole turistiche.\nArancino, pizzetta, cassata e birra al tramonto in spiaggia: cena perfetta",
-                        "relative_time_description":  "2 mesi fa",
-                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
-                        "time":  1754762219,
+                        "text":  "A 10 minuti dalla spiaggia, una pasticceria dove poter gustare sapori autentici. La viennoiserie da colazione semplicemente sublime, sfogliatura top, gusto delicato e creme di farcitura di ottima qualità (ho particolarmente apprezzato la girella con l\u0027uvetta❤️) .\nHo anche assaggiato:\n-babà (rigorosamente artigianale e non i soliti industriali);\n-Ecleire al cioccolato (super ripieni di crema al cioccolato)\n-una mini quiche salata ( non ho saputo resistere e ne è valsa la pena🥹)\nInoltre ho trovato personale molto gentile e competente che non solo mi ha saputo consigliare,ma mi ha anche raccontato il prodotto, dalla scelta delle materie prime alla sua realizzazione, è qui che si vede tutta la passione che c\u0027 è dietro!\nNon vedo l\u0027ora di tornare e assaggiare pane, tavola calda e tutto il resto della pasticceria mignon!",
+                        "relative_time_description":  "un mese fa",
+                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocJMPUaFR3xms8DW5AUKBxJ8BEGtwSb79AMwlFhoCJz1pT82WA=s128-c0x00000000-cc-rp-mo",
+                        "time":  1756284709,
+                        "language":  "it"
+                    },
+                    {
+                        "author_name":  "Gialel Ben Saad",
+                        "rating":  5,
+                        "text":  "FINALMENTE!\nLa nuova pasticceria dei Fratelli Sferruzza è una celebrazione dell’eccellenza: esperienza, inventiva e professionalità si respirano in ogni dettaglio. Il laboratorio a vista, impeccabilmente pulito, trasmette subito fiducia e trasparenza, e aggiunge un tocco spettacolare all’esperienza.\n\nIl servizio è attento e cordiale, e la qualità delle materie prime è evidente in ogni assaggio. Sotto ordinazione è possibile prenotare una vastissima scelta di dolci della tradizione siciliana, ma anche proposte internazionali eseguite con maestria.\n\nUna menzione speciale va ai maritozzi, ai cannoli croccanti farciti al momento, e alle brighelle con ricotta e crema: pura poesia per il palato!\n\nDa non perdere anche il pane artigianale, realizzato con diverse tipologie di farine selezionate e naturali, un tocco in più che dimostra l’attenzione e la passione che mettono in ogni creazione.\n\nUn posto che merita assolutamente di diventare un punto di riferimento per i golosi, sia locali che turisti.\n\nComplimenti!",
+                        "relative_time_description":  "3 mesi fa",
+                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocKdnCg3F1vQUdT8UHwdRnaFITZmeIP8V3gwVTrn_hdk9-O06w=s128-c0x00000000-cc-rp-mo-ba3",
+                        "time":  1752753715,
                         "language":  "it"
                     },
                     {
@@ -45,12 +120,12 @@
                         "language":  "it"
                     },
                     {
-                        "author_name":  "Gialel Ben Saad",
+                        "author_name":  "Matteo Allegra",
                         "rating":  5,
-                        "text":  "FINALMENTE!\nLa nuova pasticceria dei Fratelli Sferruzza è una celebrazione dell’eccellenza: esperienza, inventiva e professionalità si respirano in ogni dettaglio. Il laboratorio a vista, impeccabilmente pulito, trasmette subito fiducia e trasparenza, e aggiunge un tocco spettacolare all’esperienza.\n\nIl servizio è attento e cordiale, e la qualità delle materie prime è evidente in ogni assaggio. Sotto ordinazione è possibile prenotare una vastissima scelta di dolci della tradizione siciliana, ma anche proposte internazionali eseguite con maestria.\n\nUna menzione speciale va ai maritozzi, ai cannoli croccanti farciti al momento, e alle brighelle con ricotta e crema: pura poesia per il palato!\n\nDa non perdere anche il pane artigianale, realizzato con diverse tipologie di farine selezionate e naturali, un tocco in più che dimostra l’attenzione e la passione che mettono in ogni creazione.\n\nUn posto che merita assolutamente di diventare un punto di riferimento per i golosi, sia locali che turisti.\n\nComplimenti!",
+                        "text":  "Preso lì e portato in spiaggia a piedi. Giusto 10 minuti. Ne valgono la pena per non cadere nelle trappole turistiche.\nArancino, pizzetta, cassata e birra al tramonto in spiaggia: cena perfetta",
                         "relative_time_description":  "2 mesi fa",
-                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocKdnCg3F1vQUdT8UHwdRnaFITZmeIP8V3gwVTrn_hdk9-O06w=s128-c0x00000000-cc-rp-mo-ba3",
-                        "time":  1752753715,
+                        "profile_photo_url":  "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
+                        "time":  1754762219,
                         "language":  "it"
                     }
                 ]
