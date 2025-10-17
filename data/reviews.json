@@ -6,7 +6,7 @@
     "user_ratings_total": 26,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -81,7 +81,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2025-10-16T09:48:33",
+  "lastFetched": "2025-10-17T03:10:27",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
