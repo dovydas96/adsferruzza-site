@@ -48,6 +48,7 @@
   <script src="reviews.js" defer></script>
   <script src="rating.js" defer></script>
   <script src="hours.js" defer></script>
+  <script src="instagram.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#home" aria-label="Salta al contenuto principale"><span class="visually-hidden">Salta al contenuto</span></a>
@@ -109,6 +110,18 @@
       <hr class="section-divider gold-gradient-divider animate-divider" />
     </section>
 
+    <!-- INSTAGRAM FEED -->
+    <section id="instagram" class="instagram fade-in-section" aria-labelledby="instagram-title">
+      <h2 id="instagram-title">Seguici su Instagram</h2>
+      <div id="instagramFeed" class="instagram-grid" aria-live="polite">
+        <div class="loading">Caricamento feed Instagram...</div>
+      </div>
+      <div class="section-cta" style="text-align:center; margin: 1rem 0 0.5rem;">
+        <a href="https://www.instagram.com/ad_sferruzza_pasticceria/" target="_blank" rel="noopener" class="button-link">Visita il nostro profilo</a>
+      </div>
+      <hr class="section-divider gold-gradient-divider animate-divider" />
+    </section>
+
     <!-- REVIEWS -->
     <section id="reviewsSection" class="reviews fade-in-section" aria-labelledby="reviews-title">
       <h2 id="reviews-title">Recensioni dei Clienti</h2>
@@ -131,13 +144,7 @@
           <div class="hours-block">
             <div class="hours-heading"><span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="info-main">Orari</span></div>
             <ul class="hours-list" aria-label="Orari di apertura">
-              <li><span>Lun</span><span>07:00–20:00</span></li>
-              <li><span>Mar</span><span>07:00–20:00</span></li>
-              <li class="closed"><span>Mer</span><span>Chiuso</span></li>
-              <li><span>Gio</span><span>07:00–20:00</span></li>
-              <li><span>Ven</span><span>07:00–20:00</span></li>
-              <li><span>Sab</span><span>07:00–20:00</span></li>
-              <li><span>Dom</span><span>07:00–15:00</span></li>
+              <li><span>Caricamento orari...</span></li>
             </ul>
           </div>
         </div>
@@ -197,19 +204,6 @@
     <img src="images/icons/whatsapp.svg" width="28" height="28" alt="" />
   </a>
   <div class="whatsapp-label"><a href="https://wa.me/393762792841" target="_blank" rel="noopener">Chatta su WhatsApp</a></div>
-  <script>
-    // Evidenzia il giorno odierno nella lista orari (homepage)
-    (function(){
-      const hoursList = document.querySelector('#contact .hours-list');
-      if(!hoursList) return;
-      const today = new Date().getDay(); // 0=Dom
-      const map = {0:'Dom',1:'Lun',2:'Mar',3:'Mer',4:'Gio',5:'Ven',6:'Sab'};
-      const label = map[today];
-      hoursList.querySelectorAll('li').forEach(li=>{
-        const day = li.firstElementChild?.textContent?.trim();
-        if(day===label){ li.classList.add('today'); }
-      });
-    })();
-  </script>
+
 </body>
 </html>

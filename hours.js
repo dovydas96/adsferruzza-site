@@ -48,7 +48,7 @@
       const json = await res.json();
   const roh = json?.place?.regularOpeningHours;
   const soh = json?.place?.specialOpeningHours; // object with specialHourPeriods
-  const descs = roh?.weekdayDescriptions;
+  const descs = roh?.weekdayDescriptions || roh?.weekday_text;
       if(!Array.isArray(descs) || !descs.length) return; // keep static
       const parsed = descs.map(parseDescription).filter(Boolean);
       // Order by DAY_ORDER
