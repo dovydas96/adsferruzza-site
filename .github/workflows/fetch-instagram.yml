@@ -16,15 +16,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get token from file or secret
+        id: token
+        shell: pwsh
+        run: |
+          if (Test-Path ".instagram-token") {
+            $data = Get-Content ".instagram-token" | ConvertFrom-Json
+            echo "token=$($data.token)" >> $env:GITHUB_OUTPUT
+          } else {
+            echo "token=${{ secrets.IG_ACCESS_TOKEN }}" >> $env:GITHUB_OUTPUT
+          }
+
       - name: Fetch Instagram media
         shell: pwsh
-        env:
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
         run: |
-          if (-not $env:IG_ACCESS_TOKEN) { throw "Missing IG_ACCESS_TOKEN secret" }
-          if (-not $env:IG_USER_ID) { throw "Missing IG_USER_ID secret" }
-          ./scripts/fetch-instagram-media.ps1 -AccessToken $env:IG_ACCESS_TOKEN -UserId $env:IG_USER_ID -OutputPath data/instagram.json -Limit 12
+          if (-not "${{ steps.token.outputs.token }}") { throw "Missing token" }
+          if (-not "${{ secrets.IG_USER_ID }}") { throw "Missing IG_USER_ID secret" }
+          ./scripts/fetch-instagram-media.ps1 -AccessToken "${{ steps.token.outputs.token }}" -UserId "${{ secrets.IG_USER_ID }}" -OutputPath data/instagram.json -Limit 12
 
       - name: Commit changes if any
         shell: bash
@@ -38,3 +46,4 @@ jobs:
           else
             echo "No changes to commit"
           fi
+

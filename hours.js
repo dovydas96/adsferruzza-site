@@ -9,12 +9,16 @@
   const DATA_URL = (location.protocol === 'file:' ? './data/reviews.json' : '/data/reviews.json');
   const DAY_ORDER = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
   const DAY_MAP_IT = {Monday:'Lun',Tuesday:'Mar',Wednesday:'Mer',Thursday:'Gio',Friday:'Ven',Saturday:'Sab',Sunday:'Dom'};
+  const IT_TO_EN = {lunedì:'Monday',martedì:'Tuesday',mercoledì:'Wednesday',giovedì:'Thursday',venerdì:'Friday',sabato:'Saturday',domenica:'Sunday'};
   function parseDescription(desc){
-    // e.g. 'Monday: 7:00 AM – 8:00 PM' or 'Wednesday: Closed'
+    // e.g. 'Monday: 7:00 AM – 8:00 PM' or 'lunedì: 07:00–20:00' or 'Wednesday: Closed'
     if(!desc || typeof desc !== 'string') return null;
     const parts = desc.split(/:/); // first colon splits day
     if(parts.length < 2) return null;
-    const dayName = parts.shift().trim();
+    let dayName = parts.shift().trim();
+    // Convert Italian to English
+    const dayLower = dayName.toLowerCase();
+    if(IT_TO_EN[dayLower]) dayName = IT_TO_EN[dayLower];
     const rest = parts.join(':').trim();
     // Normalize dash variants
     const closed = /chius|closed/i.test(rest);
