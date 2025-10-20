@@ -1363,7 +1363,5 @@ footer {
 
 /* Instagram Feed */
 .instagram { padding: 4rem 1rem; }
-.instagram-embed-container { max-width: 540px; margin: 2rem auto; }
-.instagram-media { margin: 0 auto !important; }
 @media (max-width: 768px) { .instagram { padding: 3rem 1rem; } }
 

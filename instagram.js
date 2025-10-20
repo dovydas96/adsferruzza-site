@@ -1,27 +1,16 @@
-// Instagram embed - loads official Instagram widget
+// Instagram feed via Elfsight
 (function(){
   const container = document.getElementById('instagramFeed');
   if(!container) return;
   
-  // Create Instagram embed
-  const embed = document.createElement('div');
-  embed.className = 'instagram-embed-container';
-  embed.innerHTML = `
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/ad_sferruzza_pasticceria/" data-instgrm-version="14">
-      <a href="https://www.instagram.com/ad_sferruzza_pasticceria/" target="_blank">Visualizza su Instagram</a>
-    </blockquote>
-  `;
+  // Elfsight widget
+  container.innerHTML = '<div class="elfsight-app-c72cb9e0-92a5-49c8-92c5-325c1b0d26c6" data-elfsight-app-lazy></div>';
   
-  container.innerHTML = '';
-  container.appendChild(embed);
-  
-  // Load Instagram embed script
-  if(!document.querySelector('script[src*="instagram.com/embed.js"]')){
+  // Load Elfsight script
+  if(!document.querySelector('script[src*="elfsightcdn.com"]')){
     const script = document.createElement('script');
+    script.src = 'https://elfsightcdn.com/platform.js';
     script.async = true;
-    script.src = '//www.instagram.com/embed.js';
     document.body.appendChild(script);
-  } else if(window.instgrm){
-    window.instgrm.Embeds.process();
   }
 })();
