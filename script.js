@@ -3,11 +3,38 @@ document.addEventListener('DOMContentLoaded', () => {
 	const popup = document.getElementById('whatsappPopup');
 	const closeBtn = document.getElementById('closeWhatsappPopup');
 
+	// Anti-spam: Set timestamp when page loads
+	document.querySelectorAll('input[name="form_timestamp"]').forEach(input => {
+		input.value = Date.now();
+	});
+
 	// Compose full phone from country code + local number on form submit
 	(function attachPhoneComposer(){
 		function wire(form){
 			if(!form || form.dataset.phoneWired) return;
-			form.addEventListener('submit', () => {
+			
+			// Add spam protection on submit
+			form.addEventListener('submit', (e) => {
+				// Honeypot check
+				const honeypot = form.querySelector('input[name="website"]');
+				if(honeypot && honeypot.value !== '') {
+					e.preventDefault();
+					console.warn('Spam detected: honeypot filled');
+					return false;
+				}
+				
+				// Time check (must take at least 3 seconds to fill form)
+				const timestamp = form.querySelector('input[name="form_timestamp"]');
+				if(timestamp && timestamp.value) {
+					const elapsed = Date.now() - parseInt(timestamp.value);
+					if(elapsed < 3000) {
+						e.preventDefault();
+						console.warn('Spam detected: form filled too quickly');
+						return false;
+					}
+				}
+				
+				// Compose phone number
 				const code = form.querySelector('select[name="phone_code"]')?.value?.trim() || '';
 				const num = form.querySelector('input[name="phone_number"]')?.value?.trim() || '';
 				const target = form.querySelector('input[name="phone"]');

@@ -155,6 +155,9 @@
             <input type="hidden" name="phone" value="">
           </div>
           <div class="form-row"><label for="messaggio">Messaggio</label><textarea required id="messaggio" name="message" rows="4"></textarea></div>
+          <!-- Honeypot and timestamp for spam protection -->
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="form_timestamp" value="">
           <button type="submit" class="submit-btn">Invia</button>
           <div id="formStatus" class="form-status" hidden></div>
         </form>
