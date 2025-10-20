@@ -1362,6 +1362,7 @@ footer {
 .special-hours-list li.closed { background:#3a1a1a; color:#ffb4b4; }
 
 /* Instagram Feed */
-.instagram { padding: 4rem 1rem; }
-@media (max-width: 768px) { .instagram { padding: 3rem 1rem; } }
+.instagram { padding: 4rem 1rem; display: flex; flex-direction: column; align-items: center; }
+#instagramFeed { max-width: 600px; width: 100%; }
+@media (max-width: 768px) { .instagram { padding: 3rem 1rem; } #instagramFeed { max-width: 100%; } }
 
