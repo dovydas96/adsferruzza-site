@@ -1,3 +1,11 @@
+/* Global link colors */
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent-dark);
+}
+
 /* Make all paragraph text white */
 p {
   color: #fff;
