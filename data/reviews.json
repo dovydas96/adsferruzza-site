@@ -81,7 +81,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2025-11-08T03:12:24",
+  "lastFetched": "2025-11-09T03:28:21",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
@@ -90,15 +90,6 @@
       "relative_time_description": "2 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
       "time": 1755891944,
-      "language": "it"
-    },
-    {
-      "author_name": "Matteo Allegra",
-      "rating": 5,
-      "text": "Preso lì e portato in spiaggia a piedi. Giusto 10 minuti. Ne valgono la pena per non cadere nelle trappole turistiche.\nArancino, pizzetta, cassata e birra al tramonto in spiaggia: cena perfetta",
-      "relative_time_description": "3 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
-      "time": 1754762219,
       "language": "it"
     },
     {
@@ -126,6 +117,15 @@
       "relative_time_description": "3 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKdnCg3F1vQUdT8UHwdRnaFITZmeIP8V3gwVTrn_hdk9-O06w=s128-c0x00000000-cc-rp-mo-ba3",
       "time": 1752753715,
+      "language": "it"
+    },
+    {
+      "author_name": "Matteo Allegra",
+      "rating": 5,
+      "text": "Preso lì e portato in spiaggia a piedi. Giusto 10 minuti. Ne valgono la pena per non cadere nelle trappole turistiche.\nArancino, pizzetta, cassata e birra al tramonto in spiaggia: cena perfetta",
+      "relative_time_description": "3 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
+      "time": 1754762219,
       "language": "it"
     }
   ]
