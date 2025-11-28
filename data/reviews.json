@@ -11,7 +11,7 @@
         {
           "close": {
             "day": 0,
-            "time": "1500"
+            "time": "1430"
           },
           "open": {
             "day": 0,
@@ -21,7 +21,7 @@
         {
           "close": {
             "day": 1,
-            "time": "2000"
+            "time": "1930"
           },
           "open": {
             "day": 1,
@@ -31,7 +31,7 @@
         {
           "close": {
             "day": 2,
-            "time": "2000"
+            "time": "1930"
           },
           "open": {
             "day": 2,
@@ -41,7 +41,7 @@
         {
           "close": {
             "day": 4,
-            "time": "2000"
+            "time": "1930"
           },
           "open": {
             "day": 4,
@@ -51,7 +51,7 @@
         {
           "close": {
             "day": 5,
-            "time": "2000"
+            "time": "1930"
           },
           "open": {
             "day": 5,
@@ -61,7 +61,7 @@
         {
           "close": {
             "day": 6,
-            "time": "2000"
+            "time": "1930"
           },
           "open": {
             "day": 6,
@@ -70,18 +70,18 @@
         }
       ],
       "weekday_text": [
-        "lunedì: 07:00–20:00",
-        "martedì: 07:00–20:00",
+        "lunedì: 07:00–19:30",
+        "martedì: 07:00–19:30",
         "mercoledì: Chiuso",
-        "giovedì: 07:00–20:00",
-        "venerdì: 07:00–20:00",
-        "sabato: 07:00–20:00",
-        "domenica: 07:00–15:00"
+        "giovedì: 07:00–19:30",
+        "venerdì: 07:00–19:30",
+        "sabato: 07:00–19:30",
+        "domenica: 07:00–14:30"
       ]
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2025-11-27T03:20:43",
+  "lastFetched": "2025-11-28T03:28:31",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
