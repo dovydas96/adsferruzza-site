@@ -15,7 +15,7 @@
           },
           "open": {
             "day": 0,
-            "time": "0700"
+            "time": "0730"
           }
         },
         {
@@ -76,12 +76,12 @@
         "giovedì: 07:00–19:30",
         "venerdì: 07:00–19:30",
         "sabato: 07:00–19:30",
-        "domenica: 07:00–14:30"
+        "domenica: 07:30–14:30"
       ]
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2025-11-30T03:43:11",
+  "lastFetched": "2025-12-01T03:58:40",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
@@ -105,7 +105,7 @@
       "author_name": "Rebecca Zappulla",
       "rating": 5,
       "text": "Pasticceria moderna e accogliente, varia scelta tra bignè, biscotti, cannoli, croissant...\nHo provato un croissant alle nocciole e mandorle, devo dire veramente buono , ben sfogliato.\nPersonale cordiale e gentile.\nApprovato!",
-      "relative_time_description": "una settimana fa",
+      "relative_time_description": "2 settimane fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUD7QrlfxfyG2sCxmjWZ0ti53omeKGEA5mmJ9fLCo93v-U4j4Q2=s128-c0x00000000-cc-rp-mo",
       "time": 1763287189,
       "language": "it"
