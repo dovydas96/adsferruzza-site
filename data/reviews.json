@@ -81,7 +81,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2025-12-04T03:36:49",
+  "lastFetched": "2025-12-05T03:35:22",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
@@ -102,15 +102,6 @@
       "language": "it"
     },
     {
-      "author_name": "Rebecca Zappulla",
-      "rating": 5,
-      "text": "Pasticceria moderna e accogliente, varia scelta tra bignè, biscotti, cannoli, croissant...\nHo provato un croissant alle nocciole e mandorle, devo dire veramente buono , ben sfogliato.\nPersonale cordiale e gentile.\nApprovato!",
-      "relative_time_description": "2 settimane fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUD7QrlfxfyG2sCxmjWZ0ti53omeKGEA5mmJ9fLCo93v-U4j4Q2=s128-c0x00000000-cc-rp-mo",
-      "time": 1763287189,
-      "language": "it"
-    },
-    {
       "author_name": "Gialel Ben Saad",
       "rating": 5,
       "text": "FINALMENTE!\nLa nuova pasticceria dei Fratelli Sferruzza è una celebrazione dell’eccellenza: esperienza, inventiva e professionalità si respirano in ogni dettaglio. Il laboratorio a vista, impeccabilmente pulito, trasmette subito fiducia e trasparenza, e aggiunge un tocco spettacolare all’esperienza.\n\nIl servizio è attento e cordiale, e la qualità delle materie prime è evidente in ogni assaggio. Sotto ordinazione è possibile prenotare una vastissima scelta di dolci della tradizione siciliana, ma anche proposte internazionali eseguite con maestria.\n\nUna menzione speciale va ai maritozzi, ai cannoli croccanti farciti al momento, e alle brighelle con ricotta e crema: pura poesia per il palato!\n\nDa non perdere anche il pane artigianale, realizzato con diverse tipologie di farine selezionate e naturali, un tocco in più che dimostra l’attenzione e la passione che mettono in ogni creazione.\n\nUn posto che merita assolutamente di diventare un punto di riferimento per i golosi, sia locali che turisti.\n\nComplimenti!",
@@ -126,6 +117,15 @@
       "relative_time_description": "3 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
       "time": 1754762219,
+      "language": "it"
+    },
+    {
+      "author_name": "viviana di gloria",
+      "rating": 5,
+      "text": "pasticceria panificio rosticceria a Cefalù con personale gentile e professionale, abbiamo preso il pane, molto buono, ogni giorno una varietà diversa, pizzette strepitose, ben cotte condimento di qualità, ed infine abbiamo ordinato una red velvet per un compleanno davvero squisita oltre ad essere molto bella esteticamente.\nChe dire… finalmente a Cefalù un posto di livello!!! Prezzi nella media\nGentilezza e cortesia",
+      "relative_time_description": "4 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjVhhU6qEBkIVDoU3oRQLNyFu8R5Qwy7-IlvQqkc7TDN3qbv3AU=s128-c0x00000000-cc-rp-mo-ba3",
+      "time": 1754397643,
       "language": "it"
     }
   ]
