@@ -5,10 +5,83 @@
     "rating": 5,
     "user_ratings_total": 36,
     "url": "https://maps.google.com/?cid=14977958981053773710",
-    "regularOpeningHours": null,
+    "regularOpeningHours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "1430"
+          },
+          "open": {
+            "day": 0,
+            "time": "0730"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "1930"
+          },
+          "open": {
+            "day": 1,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "1930"
+          },
+          "open": {
+            "day": 2,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "1930"
+          },
+          "open": {
+            "day": 4,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "1930"
+          },
+          "open": {
+            "day": 5,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "1930"
+          },
+          "open": {
+            "day": 6,
+            "time": "0700"
+          }
+        }
+      ],
+      "weekday_text": [
+        "lunedì: 07:00–19:30",
+        "martedì: 07:00–19:30",
+        "mercoledì: Chiuso",
+        "giovedì: 07:00–19:30",
+        "venerdì: 07:00–19:30",
+        "sabato: 07:00–19:30",
+        "domenica: 07:30–14:30"
+      ]
+    },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-01-29T04:14:35",
+  "lastFetched": "2026-01-30T04:17:54",
   "reviews": [
     {
       "author_name": "Rodolfo Valentino",
