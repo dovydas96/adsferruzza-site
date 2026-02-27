@@ -81,24 +81,15 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-02-26T04:25:02",
+  "lastFetched": "2026-02-27T04:22:14",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
       "rating": 5,
       "text": "This was lovely lovely bakery shop I’ve ever had. Everything was great. Specifically The pistachio Cannolo was really tasty that I went back to there for about one☺️\nThank you for making my first time Cefalu so happy.\n\nÈ stata la pasticceria più deliziosa che abbia mai provato.\nEra tutto ottimo.\nIn particolare, il cannolo al pistacchio era così buono che sono tornata apposta per prenderne un altro ☺️\nGrazie per aver reso la mia prima volta a Cefalù così felice.",
-      "relative_time_description": "una settimana fa",
+      "relative_time_description": "2 settimane fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWh2s-Ne2Bx1zwWywJdeJEL8WyMXTChZnbFDrec_gUIsVEICq0V=s128-c0x00000000-cc-rp-mo",
       "time": 1770891168,
-      "language": "it"
-    },
-    {
-      "author_name": "Rodolfo Valentino",
-      "rating": 5,
-      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
-      "relative_time_description": "6 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
-      "time": 1755891944,
       "language": "it"
     },
     {
@@ -120,12 +111,21 @@
       "language": "it"
     },
     {
-      "author_name": "Matteo Allegra",
+      "author_name": "Emanuele",
       "rating": 5,
-      "text": "Preso lì e portato in spiaggia a piedi. Giusto 10 minuti. Ne valgono la pena per non cadere nelle trappole turistiche.\nArancino, pizzetta, cassata e birra al tramonto in spiaggia: cena perfetta",
+      "text": "Locale nuovo molto ben curato, facilmente raggiungibile a piedi. C'è un'ampia scelta di dolce e salato e anche pane.\nProdotti sempre freschi, di altissima qualità e buonissimi. Prezzo top.\nComplimenti a Davide e Alessio e tutte le persone che lavorano con loro. Ci tornerò sicuramente.",
       "relative_time_description": "6 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKioAnosLPiJJbZZxLt4SV88UFILRnOIw706UGY7W0GHcnJJTc=s128-c0x00000000-cc-rp-mo",
-      "time": 1754762219,
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocK_w-hCowY1fb8HnvRlZtZp-80a5obIvUAaUnq9W8R7Q6K92Q=s128-c0x00000000-cc-rp-mo-ba3",
+      "time": 1755761624,
+      "language": "it"
+    },
+    {
+      "author_name": "Maria Ferrara",
+      "rating": 5,
+      "text": "Ci siamo imbattute in questa pasticceria per fare  una colazione take away e siamo state pienamente soddisfatte! Dal pane per il pranzo, al cannolo siciliano, pain chocolate,  per non parlare delle arancine!!!! lo staff gentilissimo e prezzi pari alla qualità!!! Se siete in zona vi dovete assolutamente fermare!",
+      "relative_time_description": "6 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLGxpyw5GPvpapQR_FyRcag2QWHTg4ZllLGL3bs-d6JOR6V2Q=s128-c0x00000000-cc-rp-mo",
+      "time": 1754162859,
       "language": "it"
     }
   ]
