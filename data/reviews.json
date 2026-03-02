@@ -81,7 +81,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-03-01T04:30:52",
+  "lastFetched": "2026-03-02T04:23:25",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -90,6 +90,15 @@
       "relative_time_description": "2 settimane fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWh2s-Ne2Bx1zwWywJdeJEL8WyMXTChZnbFDrec_gUIsVEICq0V=s128-c0x00000000-cc-rp-mo",
       "time": 1770891168,
+      "language": "it"
+    },
+    {
+      "author_name": "Rodolfo Valentino",
+      "rating": 5,
+      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
+      "relative_time_description": "6 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
+      "time": 1755891944,
       "language": "it"
     },
     {
@@ -117,15 +126,6 @@
       "relative_time_description": "6 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJMPUaFR3xms8DW5AUKBxJ8BEGtwSb79AMwlFhoCJz1pT82WA=s128-c0x00000000-cc-rp-mo",
       "time": 1756284709,
-      "language": "it"
-    },
-    {
-      "author_name": "Emanuele",
-      "rating": 5,
-      "text": "Locale nuovo molto ben curato, facilmente raggiungibile a piedi. C'è un'ampia scelta di dolce e salato e anche pane.\nProdotti sempre freschi, di altissima qualità e buonissimi. Prezzo top.\nComplimenti a Davide e Alessio e tutte le persone che lavorano con loro. Ci tornerò sicuramente.",
-      "relative_time_description": "6 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocK_w-hCowY1fb8HnvRlZtZp-80a5obIvUAaUnq9W8R7Q6K92Q=s128-c0x00000000-cc-rp-mo-ba3",
-      "time": 1755761624,
       "language": "it"
     }
   ]
