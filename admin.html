@@ -154,6 +154,16 @@
       </div>
       <div id="featuredList"></div>
     </div>
+
+    <div class="admin-card hidden" id="menuCard">
+      <h2>Menu PDF</h2>
+      <p class="notice" style="margin-bottom:.6rem;">Carica un nuovo PDF per sostituire il menu visualizzato su <a href="/menu" target="_blank" rel="noopener">/menu</a>. Max ~10 MB.</p>
+      <label for="menuFile">File PDF</label>
+      <input type="file" id="menuFile" accept="application/pdf">
+      <button class="admin-btn" id="btnUploadMenu" style="margin-top:.5rem;">Carica menu</button>
+      <p id="menuStatus" class="notice hidden" aria-live="polite"></p>
+      <p id="menuCurrent" style="margin-top:.6rem; opacity:.85;"></p>
+    </div>
   </div>
 <script>
   // Reveal one-time Register button only when ?register=1 is present in the URL.

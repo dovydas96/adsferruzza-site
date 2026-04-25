@@ -27,6 +27,13 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Site-wide singletons (e.g. current menu URL)
+    match /site/{doc} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+      allow write: if isAdmin();
+    }
+
     // Deny everything else by default
     match /{document=**} {
       allow read, write: if false;

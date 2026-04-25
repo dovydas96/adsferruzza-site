@@ -3,20 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Articolo | AD Sferruzza Pasticceria</title>
-  <meta name="description" content="Articolo del blog AD Sferruzza Pasticceria: novità, ricette e storie dalla nostra pasticceria a Cefalù.">
-  <link rel="canonical" href="https://adsferruzza.com/blog-post.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="AD Sferruzza Pasticceria">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Articolo | AD Sferruzza Pasticceria">
-  <meta property="og:description" content="Novità, ricette e storie dalla nostra pasticceria a Cefalù.">
-  <meta property="og:url" content="https://adsferruzza.com/blog-post.html">
+  <title>Menu | AD Sferruzza Pasticceria</title>
+  <meta name="description" content="Il menu di AD Sferruzza Pasticceria a Cefalù: dolci, torte, cannoli, cassate e specialità siciliane.">
+  <link rel="canonical" href="https://adsferruzza.com/menu.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Menu | AD Sferruzza Pasticceria">
+  <meta property="og:description" content="Il menu di AD Sferruzza Pasticceria a Cefalù.">
+  <meta property="og:url" content="https://adsferruzza.com/menu.html">
   <meta property="og:image" content="https://adsferruzza.com/images/family-hero.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Articolo | AD Sferruzza Pasticceria">
-  <meta name="twitter:description" content="Novità, ricette e storie dalla nostra pasticceria a Cefalù.">
-  <meta name="twitter:image" content="https://adsferruzza.com/images/family-hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -26,39 +20,48 @@
   <script src="site-config.js"></script>
   <script src="script.js" defer></script>
   <script src="partials.js" defer></script>
-  <script src="safe.js" defer></script>
-  <!-- Optional: Firebase for dynamic blog. Fill firebase-config.js to enable. -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script src="firebase-config.js"></script>
   <script src="firebase-init.js"></script>
-  <script src="blog.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        if (!window.firebase?.apps?.length) return;
+        const db = firebase.firestore();
+        const doc = await db.collection('site').doc('menu').get();
+        if (!doc.exists) return;
+        const url = doc.data()?.url;
+        if (!url) return;
+        const a = document.getElementById('menuDownload');
+        const obj = document.getElementById('menuEmbed');
+        if (a) a.href = url;
+        if (obj) obj.data = url + '#view=FitH';
+      } catch (_) { /* fall back to static /menu/menu.pdf */ }
+    });
+  </script>
 </head>
 <body>
   <div class="confetti-bg"></div>
   <header data-include="/partials/header.html"></header>
 
-  <main id="postContainer" class="blog">
+  <main class="blog">
     <section class="blog-hero fade-in-section visible">
-      <p class="breadcrumb" id="postBreadcrumb">Home / Blog / …</p>
-      <h1 id="postTitle"><span class="heading-underline">Titolo</span></h1>
-      <p class="blog-meta" id="postMeta">Data · Lettura</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Menu</p>
+      <h1><span class="heading-underline">Il Nostro Menu</span></h1>
+      <p class="blog-meta">Le nostre specialità siciliane</p>
     </section>
 
     <section class="post-body fade-in-section visible">
-      <div class="post-hero">
-        <img id="postHeroImg" src="" alt="" />
-      </div>
-      <article class="post-content" id="postContent"></article>
-      <div class="post-share" aria-label="Condividi articolo">
-        <button type="button" id="btnShare" class="share-btn" title="Condividi">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M18 16.1a3 3 0 0 0-2.3 1.1l-7-4.1a3 3 0 0 0 0-2.2l7-4.1A3 3 0 1 0 15 5l-7 4.1a3 3 0 1 0 0 5.8l7 4.1A3 3 0 1 0 18 16.1z"/></svg>
-          <span>Condividi</span>
-        </button>
-        <a class="share-btn" id="btnShareWhatsapp" href="#" target="_blank" rel="noopener" title="WhatsApp">WhatsApp</a>
-        <a class="share-btn" id="btnShareFacebook" href="#" target="_blank" rel="noopener" title="Facebook">Facebook</a>
-        <a class="share-btn" id="btnShareX" href="#" target="_blank" rel="noopener" title="X">X</a>
-        <span id="shareToast" class="share-toast" role="status" aria-live="polite"></span>
+      <p style="text-align:center;margin-bottom:1rem;">
+        <a id="menuDownload" class="share-btn" href="/menu/menu.pdf" target="_blank" rel="noopener" download>Scarica il menu (PDF)</a>
+      </p>
+      <div class="menu-embed">
+        <object id="menuEmbed" data="/menu/menu.pdf#view=FitH" type="application/pdf" aria-label="Menu AD Sferruzza Pasticceria">
+          <p>Il tuo browser non può mostrare il PDF integrato.
+            <a href="/menu/menu.pdf" target="_blank" rel="noopener">Apri il menu in una nuova scheda</a>.
+          </p>
+        </object>
       </div>
     </section>
   </main>
@@ -82,9 +85,9 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.5 2h3.2a5.7 5.7 0 0 0 1.7 3.5 5.8 5.8 0 0 0 3.6 1.3v3.3a9 9 0 0 1-5.3-1.8v6.8a6.2 6.2 0 1 1-6.2-6.2c.5 0 1 .1 1.5.2v3.4a2.9 2.9 0 1 0 2.1 2.8V2z"/></svg>
       </a>
     </div>
-    <p>&copy; 2025 AD Sferruzza Pasticceria. Sito dimostrativo. <a href="/privacy.html">Privacy</a></p>
-  <p class="footer-tripadvisor"><a href="https://www.tripadvisor.it/Restaurant_Review-g25433221-d33927831-Reviews-AD_Sferruzza_Pasticceria-Cefalu_City_Cefalu_Province_of_Palermo_Sicily.html?m=69573" target="_blank" rel="noopener" title="Tripadvisor"><span class="ta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c3.9 0 7.2.9 9.5 2.4-.7 1.2-1.6 2.2-2.7 3 0 4-3.1 7.6-6.8 7.6S5.2 15.4 5.2 11.4c-1.1-.8-2-1.8-2.7-3C4.8 6.9 8.1 6 12 6Zm-6 4.2a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm12 0a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm-12 1.5a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4Zm12 0a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4Z"/></svg></span>Find us on Tripadvisor</a></p>
+    <p>&copy; <span id="year"></span> AD Sferruzza Pasticceria. Tutti i diritti riservati. <a href="/privacy.html">Privacy</a></p>
   </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
   <a href="https://wa.me/393762792841?text=Ciao%20AD%20Sferruzza!%20Vorrei%20chiedere%20informazioni%20su..." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chatta su WhatsApp" title="Chatta su WhatsApp">
     <img src="images/icons/whatsapp.svg" width="28" height="28" alt="" />

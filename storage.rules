@@ -22,6 +22,11 @@ service firebase.storage {
       allow write: if isAdmin();
     }
 
+    match /menu/{allPaths=**} {
+      allow read: if true;            // public menu PDF
+      allow write: if isAdmin();
+    }
+
     // Default: deny other paths
     match /{path=**} {
       allow read, write: if false;

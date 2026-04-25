@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const photoCard = document.getElementById('photoCard');
   const featuredCard = document.getElementById('featuredCard');
   const featuredManageCard = document.getElementById('featuredManageCard');
+  const menuCard = document.getElementById('menuCard');
 
   function setAuthed(user) {
     if (user) {
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   photoCard.classList.remove('hidden');
   featuredCard && featuredCard.classList.remove('hidden');
   featuredManageCard && featuredManageCard.classList.remove('hidden');
+  menuCard && menuCard.classList.remove('hidden');
     } else {
       authLoggedOut.classList.remove('hidden');
       authLoggedIn.classList.add('hidden');
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   photoCard.classList.add('hidden');
   featuredCard && featuredCard.classList.add('hidden');
   featuredManageCard && featuredManageCard.classList.add('hidden');
+  menuCard && menuCard.classList.add('hidden');
     }
   }
 
@@ -632,4 +635,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
   auth.onAuthStateChanged((u) => { if (u) loadFeatured(); });
+
+  // --- Menu PDF upload ---
+  const menuFile = document.getElementById('menuFile');
+  const btnUploadMenu = document.getElementById('btnUploadMenu');
+  const menuStatus = document.getElementById('menuStatus');
+  const menuCurrent = document.getElementById('menuCurrent');
+
+  async function loadCurrentMenu() {
+    if (!menuCurrent) return;
+    try {
+      const doc = await db.collection('site').doc('menu').get();
+      if (doc.exists) {
+        const d = doc.data();
+        const when = d.updatedAt?.toDate ? d.updatedAt.toDate().toLocaleString('it-IT') : '';
+        menuCurrent.innerHTML = `Menu attuale: <a href="${d.url}" target="_blank" rel="noopener">apri PDF</a>${when ? ` (aggiornato ${when})` : ''}`;
+      } else {
+        menuCurrent.textContent = 'Nessun menu caricato: verrà usato /menu/menu.pdf statico.';
+      }
+    } catch (e) {
+      menuCurrent.textContent = '';
+    }
+  }
+
+  if (btnUploadMenu) {
+    btnUploadMenu.addEventListener('click', async () => {
+      const f = menuFile?.files?.[0];
+      if (!f) { setStatus(menuStatus, 'Seleziona un file PDF.'); return; }
+      if (f.type !== 'application/pdf') { setStatus(menuStatus, 'Il file deve essere un PDF.'); return; }
+      btnUploadMenu.disabled = true;
+      try {
+        await auth.currentUser?.getIdToken(true).catch(()=>{});
+        const stampedName = `menu-${Date.now()}.pdf`;
+        const refPath = `menu/${stampedName}`;
+        const ref = storage.ref().child(refPath);
+        await ref.put(f, { contentType: 'application/pdf', cacheControl: 'public, max-age=300' });
+        const url = await ref.getDownloadURL();
+        await db.collection('site').doc('menu').set({
+          url,
+          path: refPath,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        }, { merge: true });
+        menuFile.value = '';
+        setStatus(menuStatus, 'Menu aggiornato.');
+        loadCurrentMenu();
+      } catch (e) {
+        setStatus(menuStatus, 'Errore: ' + (e.message || e));
+      } finally {
+        btnUploadMenu.disabled = false;
+      }
+    });
+  }
+
+  auth.onAuthStateChanged((u) => { if (u) loadCurrentMenu(); });
 });

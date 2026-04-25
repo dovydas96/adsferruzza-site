@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   safe = safe.replace(/(https?:\/\/[^\s<]+)(?![^<]*>)/g, (m) => `<a href=\"${m}\" target=\"_blank\" rel=\"noopener noreferrer\">${m}</a>`);
   // 4b) Auto-link www.* (prepend https)
   safe = safe.replace(/(^|\s)(www\.[^\s<]+)(?![^<]*>)/g, (_m, pre, url) => `${pre}<a href=\"https://${url}\" target=\"_blank\" rel=\"noopener noreferrer\">${url}</a>`);
+  // 4c) Auto-link the brand "Gambero Rosso" to its listing page (first occurrence only)
+  safe = safe.replace(/\bGambero\s+Rosso\b(?![^<]*>)/, (m) => `<a href=\"https://www.gamberorosso.it/luoghi/locali/pasticceria/ad-sferruzza-pasticceria/\" target=\"_blank\" rel=\"noopener noreferrer\">${m}</a>`);
     // 5) Restore tokens
     for (const { token, html } of tokens) {
       safe = safe.replace(new RegExp(token, 'g'), html);
@@ -78,6 +80,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   const isIntro = /^(introduzione|introduction):?$/i.test(text);
   const isConclusion = /^(conclusione|conclusion):?$/i.test(text);
     const hMatch = text.match(/^(#{1,6})\s+(.+)$/); // Markdown-style heading
+    // Auto-heading: a short single-line paragraph that looks like a label
+    // (Title Case or ALL CAPS, under 80 chars, no sentence-ending punctuation).
+    const looksLikeHeading = !text.includes('\n')
+      && text.length <= 80
+      && !/[.!?]$/.test(text)
+      && (/^[A-ZÀÁÈÉÌÍÒÓÙÚ][^.!?]*:$/.test(text) // ends with colon
+          || /^[A-ZÀÁÈÉÌÍÒÓÙÚ0-9\s'"\-–—]+$/.test(text) // ALL CAPS
+          || /^(?:[A-ZÀÁÈÉÌÍÒÓÙÚ][\wÀ-ÿ'’]*\s*){2,10}$/.test(text) // Title Case 2-10 words
+          || /^[A-ZÀÁÈÉÌÍÒÓÙÚ][^.!?]{10,78}:\s+[^.!?]+$/.test(text)); // Italian sentence case with mid-colon subtitle (e.g. "La nostra pasticceria a Cefalù: tradizione e qualità siciliana")
     if (isIntro || isConclusion) {
       const label = text.charAt(0).toUpperCase() + text.slice(1);
       const id = slugify(label);
@@ -90,6 +101,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Ensure only one H1 per page: downgrade # to H2, ###→H3
       const tag = level <= 2 ? 'h2' : 'h3';
       return `<${tag} id="${id}">${esc(body)}</${tag}>`;
+    }
+    if (looksLikeHeading) {
+      const label = text.replace(/:$/, '');
+      const id = slugify(label);
+      return `<h2 id="${id}">${esc(label)}</h2>`;
     }
     // Ordered list: lines beginning with "1. ", "2. ", etc.
     if (/^\d+\.\s+/m.test(text)) {
@@ -285,6 +301,39 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
       injectLd('ld-article', articleLd);
       injectLd('ld-breadcrumb', breadcrumbLd);
+
+      // --- Share button wiring ---
+      try {
+        const shareUrl = canonicalUrl;
+        const shareTitle = post.title || 'AD Sferruzza Pasticceria';
+        const enc = encodeURIComponent;
+        const wa = document.getElementById('btnShareWhatsapp');
+        const fb = document.getElementById('btnShareFacebook');
+        const tw = document.getElementById('btnShareX');
+        const btn = document.getElementById('btnShare');
+        const toast = document.getElementById('shareToast');
+        if (wa) wa.href = `https://wa.me/?text=${enc(shareTitle + ' — ' + shareUrl)}`;
+        if (fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${enc(shareUrl)}`;
+        if (tw) tw.href = `https://twitter.com/intent/tweet?text=${enc(shareTitle)}&url=${enc(shareUrl)}`;
+        const showToast = (msg) => {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2200);
+        };
+        if (btn) btn.addEventListener('click', async () => {
+          const data = { title: shareTitle, text: shareTitle, url: shareUrl };
+          try {
+            if (navigator.share) { await navigator.share(data); return; }
+          } catch (_) { /* user cancelled; fall through */ }
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            showToast('Link copiato!');
+          } catch (_) {
+            showToast('Impossibile copiare il link');
+          }
+        });
+      } catch (_) { /* share UI is non-critical */ }
 
       // --- Internal linking: CTA and Related Posts ---
       try {
