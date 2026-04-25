@@ -2,8 +2,7 @@ name: Update Google Reviews
 
 on:
   schedule:
-    # Daily at 02:15 UTC (adjust as desired)
-    - cron: '15 2 * * *'
+    - cron: '15 2 * * *'  # Daily at 02:15 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -13,26 +12,29 @@ jobs:
   update-reviews:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Fetch reviews (Place ID preferred, fallback to Maps URL)
-        shell: pwsh
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
           GOOGLE_MAPS_URL: ${{ secrets.GOOGLE_MAPS_URL }}
+          REVIEWS_MAX: '6'
+          LANGUAGE: it
         run: |
-          if ($env:GOOGLE_PLACES_API_KEY -and $env:GOOGLE_PLACE_ID) {
-            ./scripts/fetch-google-reviews.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -PlaceId $env:GOOGLE_PLACE_ID -OutputPath data/reviews.json -Language it -Max 6
-          } elseif ($env:GOOGLE_PLACES_API_KEY -and $env:GOOGLE_MAPS_URL) {
-            ./scripts/fetch-from-maps-url.ps1 -ApiKey $env:GOOGLE_PLACES_API_KEY -MapsUrl $env:GOOGLE_MAPS_URL -OutputPath data/reviews.json -Language it
-          } else {
-            Write-Host "[reviews] Skipping: required secrets missing"
-          }
+          if [[ -n "$GOOGLE_PLACES_API_KEY" && -n "$GOOGLE_PLACE_ID" ]]; then
+            node scripts/fetch-google-reviews.mjs
+          elif [[ -n "$GOOGLE_PLACES_API_KEY" && -n "$GOOGLE_MAPS_URL" ]]; then
+            node scripts/fetch-from-maps-url.mjs
+          else
+            echo "[reviews] Skipping: required secrets missing"
+          fi
 
       - name: Commit changes if any
-        shell: bash
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"

@@ -33,10 +33,10 @@ Google Places API charges approximately $0.017 per request.
 
 ## Testing Locally
 
-```powershell
-$env:GOOGLE_PLACES_API_KEY = "your-key"
-$env:GOOGLE_PLACE_ID = "ChIJMfJik-07FxMRjvcULlZm3M8"
-./scripts/fetch-opening-hours.ps1
+```bash
+export GOOGLE_PLACES_API_KEY="your-key"
+export GOOGLE_PLACE_ID="ChIJMfJik-07FxMRjvcULlZm3M8"
+npm run fetch:hours
 ```
 
 ## Data Structure
@@ -46,7 +46,7 @@ The script updates `data/reviews.json` with:
 {
   "place": {
     "regularOpeningHours": {
-      "open_now": true,
+      "openNow": true,
       "periods": [...],
       "weekdayDescriptions": [...]
     },

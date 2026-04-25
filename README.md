@@ -35,6 +35,6 @@ Quick start:
 Performance/SEO:
 - Hero preloaded; images have width/height to reduce CLS
 - Open Graph/Twitter set; JSON-LD includes Bakery and OfferCatalog
-- Use scripts/optimize-images.ps1 to downsize JPEGs on Windows PowerShell
+- Run `npm run optimize:images` to downsize JPEGs (requires `npm install`)
 
 License: Content is placeholder; replace with your own. Code MIT unless specified otherwise.

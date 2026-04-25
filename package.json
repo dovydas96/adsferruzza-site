@@ -4,7 +4,12 @@
   "type": "module",
   "scripts": {
     "build:hero": "node scripts/build-hero.mjs",
-    "import:hero": "node scripts/import-hero.mjs"
+    "import:hero": "node scripts/import-hero.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "resize:image": "node scripts/resize-image.mjs",
+    "fetch:hours": "node scripts/fetch-opening-hours.mjs",
+    "fetch:reviews": "node scripts/fetch-google-reviews.mjs",
+    "fetch:from-maps-url": "node scripts/fetch-from-maps-url.mjs"
   },
   "dependencies": {
     "sharp": "^0.33.4"
