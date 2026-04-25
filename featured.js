@@ -30,13 +30,14 @@
       // Build dynamic markup
       const grid = document.createElement('div');
       grid.className = 'product-list';
+      const { escapeHTML, safeImageURL } = window.safe;
       items.forEach(it => {
         const card = document.createElement('div');
         card.className = 'product';
         card.innerHTML = `
-          <img src="${it.image}" alt="${it.name}" loading="lazy" decoding="async">
-          <h3>${it.name}</h3>
-          <p>${it.text || ''}</p>
+          <img src="${safeImageURL(it.image)}" alt="${escapeHTML(it.name)}" loading="lazy" decoding="async">
+          <h3>${escapeHTML(it.name)}</h3>
+          <p>${escapeHTML(it.text || '')}</p>
         `;
         grid.appendChild(card);
       });

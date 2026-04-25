@@ -192,15 +192,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         row.style.borderRadius = '10px';
         row.style.padding = '10px';
         row.style.background = '#1f1f1f';
+        const { escapeHTML } = window.safe;
         row.innerHTML = `
           <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;">
             <div>
-              <div style="font-weight:700">${it.title || it.id}</div>
-              <div style="opacity:.75;font-size:.9rem;">${it.date || ''} · ${it.readTime ? `${it.readTime} min` : ''}</div>
+              <div style="font-weight:700">${escapeHTML(it.title || it.id)}</div>
+              <div style="opacity:.75;font-size:.9rem;">${escapeHTML(it.date || '')} · ${it.readTime ? `${escapeHTML(String(it.readTime))} min` : ''}</div>
             </div>
             <div style="display:flex;gap:8px;">
-              <button class="admin-btn" data-action="edit-post" data-id="${it.id}">Modifica</button>
-              <button class="admin-btn" data-action="delete-post" data-id="${it.id}" data-image="${it.image || ''}">Elimina</button>
+              <button class="admin-btn" data-action="edit-post" data-id="${escapeHTML(it.id)}">Modifica</button>
+              <button class="admin-btn" data-action="delete-post" data-id="${escapeHTML(it.id)}" data-image="${escapeHTML(it.image || '')}">Elimina</button>
             </div>
           </div>
         `;
@@ -209,7 +210,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       postList.innerHTML = '';
       postList.appendChild(list);
     } catch (e) {
-      postList.innerHTML = `<p style="color:#ffb4b4">Errore caricamento: ${e.message}</p>`;
+      postList.innerHTML = `<p style="color:#ffb4b4">Errore caricamento: ${window.safe.escapeHTML(e.message)}</p>`;
     }
   }
 
@@ -394,11 +395,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.style.borderRadius = '10px';
         card.style.padding = '8px';
         card.style.background = '#1f1f1f';
+        const { escapeHTML, safeImageURL } = window.safe;
         card.innerHTML = `
-          <img src="${item.url}" alt="${item.alt || ''}" style="width:100%;height:100px;object-fit:cover;border-radius:6px;" />
+          <img src="${safeImageURL(item.url)}" alt="${escapeHTML(item.alt || '')}" style="width:100%;height:100px;object-fit:cover;border-radius:6px;" />
           <div style="margin-top:6px; display:flex; gap:6px; align-items:center; justify-content:space-between;">
-            <small style="opacity:.7;word-break:break-all;">${(item.path || '').split('/').pop() || 'foto'}</small>
-            <button class="admin-btn" data-docid="${item.id}" data-path="${item.path || ''}" data-url="${item.url}">Elimina</button>
+            <small style="opacity:.7;word-break:break-all;">${escapeHTML((item.path || '').split('/').pop() || 'foto')}</small>
+            <button class="admin-btn" data-docid="${escapeHTML(item.id)}" data-path="${escapeHTML(item.path || '')}" data-url="${escapeHTML(item.url)}">Elimina</button>
           </div>
         `;
         list.appendChild(card);
@@ -406,7 +408,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       photoList.innerHTML = '';
       photoList.appendChild(list);
     } catch (e) {
-      photoList.innerHTML = `<p style="color:#ffb4b4">Errore nel caricamento: ${e.message}</p>`;
+      photoList.innerHTML = `<p style="color:#ffb4b4">Errore nel caricamento: ${window.safe.escapeHTML(e.message)}</p>`;
     }
   }
 
@@ -519,18 +521,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.setAttribute('draggable', 'true');
         card.setAttribute('data-id', it.id);
         card.setAttribute('data-order', it.order ?? '');
+        const { escapeHTML, safeImageURL } = window.safe;
         card.innerHTML = `
           <div style="display:flex; gap:8px; align-items:center;">
             <div class="drag-handle" style="cursor:grab; user-select:none; font-size:18px;">≡</div>
-            <img src="${it.image}" alt="${it.name}" style="width:80px;height:80px;object-fit:cover;border-radius:6px;flex:0 0 auto;" />
+            <img src="${safeImageURL(it.image)}" alt="${escapeHTML(it.name)}" style="width:80px;height:80px;object-fit:cover;border-radius:6px;flex:0 0 auto;" />
             <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
-              <input type="text" class="feat-name" value="${it.name || ''}" placeholder="Nome" style="width:100%; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
-              <input type="text" class="feat-text" value="${it.text || ''}" placeholder="Descrizione/Prezzo" style="width:100%; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
+              <input type="text" class="feat-name" value="${escapeHTML(it.name || '')}" placeholder="Nome" style="width:100%; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
+              <input type="text" class="feat-text" value="${escapeHTML(it.text || '')}" placeholder="Descrizione/Prezzo" style="width:100%; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
               <div style="display:flex; gap:8px; align-items:center;">
                 <label style="opacity:.8;">Ordine</label>
-                <input type="number" class="feat-order" value="${it.order ?? 1}" min="1" style="width:80px; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
-                <button class="admin-btn" data-action="save-featured" data-id="${it.id}">Salva</button>
-                <button class="admin-btn" data-action="delete-featured" data-id="${it.id}" data-path="${it.path || ''}" data-url="${it.image}">Elimina</button>
+                <input type="number" class="feat-order" value="${escapeHTML(String(it.order ?? 1))}" min="1" style="width:80px; padding:6px; border-radius:6px; border:1px solid #444; background:#2a2a2a; color:#F6E7B6;" />
+                <button class="admin-btn" data-action="save-featured" data-id="${escapeHTML(it.id)}">Salva</button>
+                <button class="admin-btn" data-action="delete-featured" data-id="${escapeHTML(it.id)}" data-path="${escapeHTML(it.path || '')}" data-url="${escapeHTML(it.image)}">Elimina</button>
               </div>
             </div>
           </div>
@@ -559,7 +562,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       list.addEventListener('dragend', () => { dragEl = null; });
     } catch (e) {
-      featuredList.innerHTML = `<p style="color:#ffb4b4">Errore: ${e.message}</p>`;
+      featuredList.innerHTML = `<p style="color:#ffb4b4">Errore: ${window.safe.escapeHTML(e.message)}</p>`;
     }
   }
 

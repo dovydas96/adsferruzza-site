@@ -12,6 +12,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
   <script src="firebase-config.js"></script>
   <script src="firebase-init.js"></script>
+  <script src="safe.js"></script>
   <script src="admin.js" defer></script>
   <style>
     .admin-wrap { max-width: 900px; margin: 2rem auto; padding: 1rem; }
@@ -45,7 +46,7 @@
         <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
         <div class="row">
           <button class="admin-btn" id="btnLogin">Accedi</button>
-          <button class="admin-btn" id="btnRegister">Registra (una tantum)</button>
+          <button class="admin-btn hidden" id="btnRegister">Registra (una tantum)</button>
         </div>
       </div>
       <div id="authLoggedIn" class="hidden">
@@ -154,5 +155,12 @@
       <div id="featuredList"></div>
     </div>
   </div>
+<script>
+  // Reveal one-time Register button only when ?register=1 is present in the URL.
+  // After the single admin account exists, disable Email/Password sign-up in Firebase Auth console.
+  if (new URLSearchParams(location.search).get('register') === '1') {
+    document.getElementById('btnRegister')?.classList.remove('hidden');
+  }
+</script>
 </body>
 </html>

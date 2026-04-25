@@ -130,14 +130,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       posts.forEach(p => {
         const art = document.createElement('article');
         art.className = 'blog-card';
+        const { escapeHTML, safeImageURL } = window.safe;
         art.innerHTML = `
           <a class="blog-thumb" href="blog-post.html?slug=${encodeURIComponent(p.slug)}">
-            <img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async">
+            <img src="${safeImageURL(p.image)}" alt="${escapeHTML(p.title)}" loading="lazy" decoding="async">
           </a>
           <div class="blog-content">
-            <h2 class="blog-title"><a href="blog-post.html?slug=${encodeURIComponent(p.slug)}">${p.title}</a></h2>
-            <p class="blog-meta">${formatDate(p.date)} · ${p.readTime} min</p>
-            <p class="blog-excerpt">${p.excerpt}</p>
+            <h2 class="blog-title"><a href="blog-post.html?slug=${encodeURIComponent(p.slug)}">${escapeHTML(p.title)}</a></h2>
+            <p class="blog-meta">${escapeHTML(formatDate(p.date))} · ${escapeHTML(String(p.readTime ?? ''))} min</p>
+            <p class="blog-excerpt">${escapeHTML(p.excerpt || '')}</p>
             <a class="blog-readmore" href="blog-post.html?slug=${encodeURIComponent(p.slug)}">Leggi di più →</a>
           </div>`;
         grid.appendChild(art);
@@ -189,12 +190,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   titleEl.textContent = post.title;
   metaEl.textContent = `${formatDate(post.date)} · ${post.readTime} min`;
   // Use post hero image or a sensible fallback
-  imgEl.src = post.image || 'images/family-hero.jpg';
+  imgEl.src = window.safe.safeImageURL(post.image) || 'images/family-hero.jpg';
   imgEl.alt = post.title;
   imgEl.loading = 'eager'; // hero image should load ASAP
   imgEl.decoding = 'async';
   contentEl.innerHTML = (post.content || []).map(renderParagraph).join('');
-      crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${post.title}`;
+      crumbEl.innerHTML = `Home / <a href="blog.html">Blog</a> / ${window.safe.escapeHTML(post.title)}`;
   // Compute preferred SEO title/description values with graceful fallback
   const truncate = (s, n=160) => (s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + '…');
   const effectiveTitle = (post.seoTitle || post.metaTitle || post.title || '').trim();
@@ -310,18 +311,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (others.length && postBody) {
           const rel = document.createElement('section');
           rel.className = 'related-posts fade-in-section visible';
+          const { escapeHTML, safeImageURL } = window.safe;
           rel.innerHTML = `
             <h3 style="text-align:center; margin-top:0.5rem;">Potrebbe interessarti anche</h3>
             <div class="related-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin:1rem 0 1.5rem;">
               ${others.map(o => `
                 <article class="related-card" style="background:#1f1f1f; border:1px solid rgba(255,226,161,.25); border-radius:12px; overflow:hidden;">
                   <a href="/blog-post.html?slug=${encodeURIComponent(o.slug)}" class="related-thumb" style="display:block;">
-                    <img src="${o.image}" alt="${o.title}" loading="lazy" decoding="async" style="width:100%; height:180px; object-fit:cover; display:block;" />
+                    <img src="${safeImageURL(o.image)}" alt="${escapeHTML(o.title)}" loading="lazy" decoding="async" style="width:100%; height:180px; object-fit:cover; display:block;" />
                   </a>
                   <div class="related-content" style="padding:.75rem 1rem 1rem;">
-                    <h4 style="margin:.25rem 0 .25rem; font-size:1.05rem;"><a href="/blog-post.html?slug=${encodeURIComponent(o.slug)}">${o.title}</a></h4>
-                    <p style="opacity:.8; margin:0 0 .5rem; font-size:.9rem;">${formatDate(o.date)} · ${o.readTime} min</p>
-                    <p style="opacity:.85; margin:0; font-size:.95rem;">${o.excerpt}</p>
+                    <h4 style="margin:.25rem 0 .25rem; font-size:1.05rem;"><a href="/blog-post.html?slug=${encodeURIComponent(o.slug)}">${escapeHTML(o.title)}</a></h4>
+                    <p style="opacity:.8; margin:0 0 .5rem; font-size:.9rem;">${escapeHTML(formatDate(o.date))} · ${escapeHTML(String(o.readTime ?? ''))} min</p>
+                    <p style="opacity:.85; margin:0; font-size:.95rem;">${escapeHTML(o.excerpt || '')}</p>
                   </div>
                 </article>`).join('')}
             </div>`;

@@ -24,8 +24,8 @@ Same files as #1 (`${it.image}`, `${p.image}`, `${item.url}`). A `javascript:` U
 
 Fix: remove the Register button (or hide it behind a dev flag) and disable Email/Password sign-up in the Firebase Auth console once the admin account exists.
 
-### 4. Duplicate script tags in `index.html`
-`index.html:30-33` loads `firebase-app-compat.js` and `firebase-firestore-compat.js` twice (once without defer at lines 30-33, once with defer at 41-42). Delete lines 30-33.
+### 4. ~~Duplicate script tags in `index.html`~~ (FALSE POSITIVE — closed)
+Re-verified: `index.html` loads each Firebase compat module exactly once. Earlier grep output conflated script tags across multiple HTML files. No fix required.
 
 ## 🟠 Medium priority
 
@@ -85,8 +85,16 @@ Verify it does not disallow the site or key assets.
 
 | Severity | Count |
 |----------|-------|
-| High     | 4     |
+| High     | 3     |
 | Medium   | 7     |
 | Low      | 8     |
+
+Nothing is critical or exploitable by a random visitor today. Priority #1 is the Firestore-data XSS because the attack surface grows as blog and featured content is added.
+
+## Changelog
+- 2026-04-25: Ported scripts to Node, fixed fetch-hours workflow bugs (closed item #19).
+- 2026-04-25: Added `safe.js` helper; applied `escapeHTML`/`safeImageURL` in blog.js, featured.js, admin.js (closed items #1, #2).
+- 2026-04-25: Hid admin Register button behind `?register=1` flag (closed item #3).
+- 2026-04-25: Verified item #4 was a false positive — no duplicate script tags exist.
 
 Nothing is critical or exploitable by a random visitor today. Priority #1 is the Firestore-data XSS because the attack surface grows as blog and featured content is added.
