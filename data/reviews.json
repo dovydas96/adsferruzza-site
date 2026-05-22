@@ -6,70 +6,82 @@
     "user_ratings_total": 56,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "openNow": true,
       "periods": [
         {
-          "close": {
-            "day": 0,
-            "time": "1430"
-          },
           "open": {
             "day": 0,
-            "time": "0730"
+            "hour": 7,
+            "minute": 30
+          },
+          "close": {
+            "day": 0,
+            "hour": 14,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 1,
-            "time": "1930"
-          },
           "open": {
             "day": 1,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 1,
+            "hour": 19,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 2,
-            "time": "1930"
-          },
           "open": {
             "day": 2,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 2,
+            "hour": 19,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 4,
-            "time": "1930"
-          },
           "open": {
             "day": 4,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 4,
+            "hour": 19,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 5,
-            "time": "1930"
-          },
           "open": {
             "day": 5,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 5,
+            "hour": 19,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 6,
-            "time": "1930"
-          },
           "open": {
             "day": 6,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 6,
+            "hour": 19,
+            "minute": 30
           }
         }
       ],
-      "weekday_text": [
+      "weekdayDescriptions": [
         "lunedì: 07:00–19:30",
         "martedì: 07:00–19:30",
         "mercoledì: Chiuso",
@@ -77,9 +89,157 @@
         "venerdì: 07:00–19:30",
         "sabato: 07:00–19:30",
         "domenica: 07:30–14:30"
-      ]
+      ],
+      "nextCloseTime": "2026-05-22T17:30:00Z"
     },
-    "specialOpeningHours": null
+    "specialOpeningHours": null,
+    "currentOpeningHours": {
+      "openNow": true,
+      "periods": [
+        {
+          "open": {
+            "day": 0,
+            "hour": 7,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 24
+            }
+          },
+          "close": {
+            "day": 0,
+            "hour": 14,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 24
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 1,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 25
+            }
+          },
+          "close": {
+            "day": 1,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 25
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 2,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 26
+            }
+          },
+          "close": {
+            "day": 2,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 26
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 4,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 28
+            }
+          },
+          "close": {
+            "day": 4,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 28
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 5,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 22
+            }
+          },
+          "close": {
+            "day": 5,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 22
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 6,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 23
+            }
+          },
+          "close": {
+            "day": 6,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 5,
+              "day": 23
+            }
+          }
+        }
+      ],
+      "weekdayDescriptions": [
+        "lunedì: 07:00–19:30",
+        "martedì: 07:00–19:30",
+        "mercoledì: Chiuso",
+        "giovedì: 07:00–19:30",
+        "venerdì: 07:00–19:30",
+        "sabato: 07:00–19:30",
+        "domenica: 07:30–14:30"
+      ],
+      "nextCloseTime": "2026-05-22T17:30:00Z"
+    }
   },
   "lastFetched": "2026-05-22T06:19:17.674Z",
   "reviews": [
