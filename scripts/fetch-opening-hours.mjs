@@ -19,7 +19,7 @@ const url = `https://places.googleapis.com/v1/places/${placeId}?languageCode=it`
 const res = await fetch(url, {
   headers: {
     'X-Goog-Api-Key': apiKey,
-    'X-Goog-FieldMask': 'regularOpeningHours,specialOpeningHours',
+    'X-Goog-FieldMask': 'regularOpeningHours,currentOpeningHours',
   },
 });
 if (!res.ok) {
@@ -31,7 +31,7 @@ const body = await res.json();
 const existing = JSON.parse(readFileSync(reviewsPath, 'utf8'));
 existing.place = existing.place || {};
 if (body.regularOpeningHours) existing.place.regularOpeningHours = body.regularOpeningHours;
-if (body.specialOpeningHours) existing.place.specialOpeningHours = body.specialOpeningHours;
+if (body.currentOpeningHours) existing.place.currentOpeningHours = body.currentOpeningHours;
 
 writeFileSync(reviewsPath, JSON.stringify(existing, null, 2) + '\n', 'utf8');
 console.log(`Opening hours updated in ${reviewsPath}`);
