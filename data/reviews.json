@@ -6,80 +6,431 @@
     "user_ratings_total": 57,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "openNow": true,
       "periods": [
         {
-          "close": {
-            "day": 0,
-            "time": "1430"
-          },
           "open": {
             "day": 0,
-            "time": "0730"
+            "hour": 7,
+            "minute": 30
+          },
+          "close": {
+            "day": 0,
+            "hour": 14,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 1,
-            "time": "1930"
-          },
           "open": {
             "day": 1,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 1,
+            "hour": 14,
+            "minute": 0
           }
         },
         {
-          "close": {
-            "day": 2,
-            "time": "1930"
+          "open": {
+            "day": 1,
+            "hour": 16,
+            "minute": 0
           },
+          "close": {
+            "day": 1,
+            "hour": 19,
+            "minute": 30
+          }
+        },
+        {
           "open": {
             "day": 2,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 2,
+            "hour": 14,
+            "minute": 0
           }
         },
         {
-          "close": {
-            "day": 4,
-            "time": "1930"
+          "open": {
+            "day": 2,
+            "hour": 16,
+            "minute": 0
           },
+          "close": {
+            "day": 2,
+            "hour": 19,
+            "minute": 30
+          }
+        },
+        {
+          "open": {
+            "day": 3,
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 3,
+            "hour": 14,
+            "minute": 30
+          }
+        },
+        {
           "open": {
             "day": 4,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 4,
+            "hour": 14,
+            "minute": 0
           }
         },
         {
-          "close": {
-            "day": 5,
-            "time": "1930"
-          },
           "open": {
-            "day": 5,
-            "time": "0700"
+            "day": 4,
+            "hour": 16,
+            "minute": 0
+          },
+          "close": {
+            "day": 4,
+            "hour": 19,
+            "minute": 30
           }
         },
         {
-          "close": {
-            "day": 6,
-            "time": "1930"
+          "open": {
+            "day": 5,
+            "hour": 7,
+            "minute": 0
           },
+          "close": {
+            "day": 5,
+            "hour": 14,
+            "minute": 0
+          }
+        },
+        {
+          "open": {
+            "day": 5,
+            "hour": 16,
+            "minute": 0
+          },
+          "close": {
+            "day": 5,
+            "hour": 19,
+            "minute": 30
+          }
+        },
+        {
           "open": {
             "day": 6,
-            "time": "0700"
+            "hour": 7,
+            "minute": 0
+          },
+          "close": {
+            "day": 6,
+            "hour": 14,
+            "minute": 0
+          }
+        },
+        {
+          "open": {
+            "day": 6,
+            "hour": 16,
+            "minute": 0
+          },
+          "close": {
+            "day": 6,
+            "hour": 19,
+            "minute": 30
           }
         }
       ],
-      "weekday_text": [
-        "lunedì: 07:00–19:30",
-        "martedì: 07:00–19:30",
-        "mercoledì: Chiuso",
-        "giovedì: 07:00–19:30",
-        "venerdì: 07:00–19:30",
-        "sabato: 07:00–19:30",
+      "weekdayDescriptions": [
+        "lunedì: 07:00–14:00, 16:00–19:30",
+        "martedì: 07:00–14:00, 16:00–19:30",
+        "mercoledì: 07:00–14:30",
+        "giovedì: 07:00–14:00, 16:00–19:30",
+        "venerdì: 07:00–14:00, 16:00–19:30",
+        "sabato: 07:00–14:00, 16:00–19:30",
         "domenica: 07:30–14:30"
-      ]
+      ],
+      "nextCloseTime": "2026-06-01T12:00:00Z"
     },
-    "specialOpeningHours": null
+    "specialOpeningHours": null,
+    "currentOpeningHours": {
+      "openNow": true,
+      "periods": [
+        {
+          "open": {
+            "day": 0,
+            "hour": 7,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 7
+            }
+          },
+          "close": {
+            "day": 0,
+            "hour": 14,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 7
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 1,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 1
+            }
+          },
+          "close": {
+            "day": 1,
+            "hour": 14,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 1
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 1,
+            "hour": 16,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 1
+            }
+          },
+          "close": {
+            "day": 1,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 1
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 2,
+            "hour": 7,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 2
+            }
+          },
+          "close": {
+            "day": 2,
+            "hour": 14,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 2
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 3,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 3
+            }
+          },
+          "close": {
+            "day": 3,
+            "hour": 14,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 3
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 4,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 4
+            }
+          },
+          "close": {
+            "day": 4,
+            "hour": 14,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 4
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 4,
+            "hour": 16,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 4
+            }
+          },
+          "close": {
+            "day": 4,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 4
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 5,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 5
+            }
+          },
+          "close": {
+            "day": 5,
+            "hour": 14,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 5
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 5,
+            "hour": 16,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 5
+            }
+          },
+          "close": {
+            "day": 5,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 5
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 6,
+            "hour": 7,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 6
+            }
+          },
+          "close": {
+            "day": 6,
+            "hour": 14,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 6
+            }
+          }
+        },
+        {
+          "open": {
+            "day": 6,
+            "hour": 16,
+            "minute": 0,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 6
+            }
+          },
+          "close": {
+            "day": 6,
+            "hour": 19,
+            "minute": 30,
+            "date": {
+              "year": 2026,
+              "month": 6,
+              "day": 6
+            }
+          }
+        }
+      ],
+      "weekdayDescriptions": [
+        "lunedì: 07:00–14:00, 16:00–19:30",
+        "martedì: 07:30–14:30",
+        "mercoledì: 07:00–14:30",
+        "giovedì: 07:00–14:00, 16:00–19:30",
+        "venerdì: 07:00–14:00, 16:00–19:30",
+        "sabato: 07:00–14:00, 16:00–19:30",
+        "domenica: 07:30–14:30"
+      ],
+      "specialDays": [
+        {
+          "date": {
+            "year": 2026,
+            "month": 6,
+            "day": 2
+          }
+        }
+      ],
+      "nextCloseTime": "2026-06-01T12:00:00Z"
+    }
   },
   "lastFetched": "2026-06-01T07:23:34.690Z",
   "reviews": [
