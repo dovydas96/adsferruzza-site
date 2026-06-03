@@ -2,8 +2,8 @@
   "place": {
     "name": "AD Sferruzza Pasticceria",
     "place_id": "ChIJMfJik-07FxMRjvcULlZm3M8",
-    "rating": 5,
-    "user_ratings_total": 57,
+    "rating": 4.9,
+    "user_ratings_total": 58,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
       "open_now": true,
@@ -141,7 +141,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-06-02T06:58:11.661Z",
+  "lastFetched": "2026-06-03T07:13:53.245Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
