@@ -141,7 +141,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-07-18T05:05:21.630Z",
+  "lastFetched": "2026-07-19T05:31:55.273Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -150,15 +150,6 @@
       "relative_time_description": "5 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWh2s-Ne2Bx1zwWywJdeJEL8WyMXTChZnbFDrec_gUIsVEICq0V=s128-c0x00000000-cc-rp-mo",
       "time": 1770891168,
-      "language": "it"
-    },
-    {
-      "author_name": "Rodolfo Valentino",
-      "rating": 5,
-      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
-      "relative_time_description": "10 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
-      "time": 1755891944,
       "language": "it"
     },
     {
@@ -186,6 +177,15 @@
       "relative_time_description": "un mese fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJFKao98ZvIn7Jcd4zSHYwTjC17-5g9DB6-QARGa8XrijdXbQ=s128-c0x00000000-cc-rp-mo",
       "time": 1780609333,
+      "language": "it"
+    },
+    {
+      "author_name": "Rodolfo Valentino",
+      "rating": 5,
+      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
+      "relative_time_description": "11 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
+      "time": 1755891944,
       "language": "it"
     }
   ]
