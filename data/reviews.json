@@ -6,154 +6,130 @@
     "user_ratings_total": 72,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "openNow": true,
+      "open_now": true,
       "periods": [
         {
-          "open": {
-            "day": 0,
-            "hour": 7,
-            "minute": 30
-          },
           "close": {
             "day": 0,
-            "hour": 14,
-            "minute": 30
+            "time": "1430"
+          },
+          "open": {
+            "day": 0,
+            "time": "0730"
           }
         },
         {
-          "open": {
-            "day": 1,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 1,
-            "hour": 14,
-            "minute": 0
-          }
-        },
-        {
+            "time": "1400"
+          },
           "open": {
             "day": 1,
-            "hour": 16,
-            "minute": 0
-          },
+            "time": "0700"
+          }
+        },
+        {
           "close": {
             "day": 1,
-            "hour": 19,
-            "minute": 30
+            "time": "1930"
+          },
+          "open": {
+            "day": 1,
+            "time": "1600"
           }
         },
         {
-          "open": {
-            "day": 2,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 2,
-            "hour": 14,
-            "minute": 0
+            "time": "1400"
+          },
+          "open": {
+            "day": 2,
+            "time": "0700"
           }
         },
         {
-          "open": {
-            "day": 2,
-            "hour": 16,
-            "minute": 0
-          },
           "close": {
             "day": 2,
-            "hour": 19,
-            "minute": 30
+            "time": "1930"
+          },
+          "open": {
+            "day": 2,
+            "time": "1600"
           }
         },
         {
-          "open": {
-            "day": 3,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 3,
-            "hour": 14,
-            "minute": 30
+            "time": "1430"
+          },
+          "open": {
+            "day": 3,
+            "time": "0700"
           }
         },
         {
-          "open": {
-            "day": 4,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 4,
-            "hour": 14,
-            "minute": 0
-          }
-        },
-        {
+            "time": "1400"
+          },
           "open": {
             "day": 4,
-            "hour": 16,
-            "minute": 0
-          },
+            "time": "0700"
+          }
+        },
+        {
           "close": {
             "day": 4,
-            "hour": 19,
-            "minute": 30
+            "time": "1930"
+          },
+          "open": {
+            "day": 4,
+            "time": "1600"
           }
         },
         {
-          "open": {
-            "day": 5,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 5,
-            "hour": 14,
-            "minute": 0
+            "time": "1400"
+          },
+          "open": {
+            "day": 5,
+            "time": "0700"
           }
         },
         {
-          "open": {
-            "day": 5,
-            "hour": 16,
-            "minute": 0
-          },
           "close": {
             "day": 5,
-            "hour": 19,
-            "minute": 30
+            "time": "1930"
+          },
+          "open": {
+            "day": 5,
+            "time": "1600"
           }
         },
         {
-          "open": {
-            "day": 6,
-            "hour": 7,
-            "minute": 0
-          },
           "close": {
             "day": 6,
-            "hour": 14,
-            "minute": 0
+            "time": "1400"
+          },
+          "open": {
+            "day": 6,
+            "time": "0700"
           }
         },
         {
-          "open": {
-            "day": 6,
-            "hour": 16,
-            "minute": 0
-          },
           "close": {
             "day": 6,
-            "hour": 19,
-            "minute": 30
+            "time": "1930"
+          },
+          "open": {
+            "day": 6,
+            "time": "1600"
           }
         }
       ],
-      "weekdayDescriptions": [
+      "weekday_text": [
         "lunedì: 07:00–14:00, 16:00–19:30",
         "martedì: 07:00–14:00, 16:00–19:30",
         "mercoledì: 07:00–14:30",
@@ -161,291 +137,11 @@
         "venerdì: 07:00–14:00, 16:00–19:30",
         "sabato: 07:00–14:00, 16:00–19:30",
         "domenica: 07:30–14:30"
-      ],
-      "nextCloseTime": "2026-08-31T12:00:00Z"
+      ]
     },
-    "specialOpeningHours": null,
-    "currentOpeningHours": {
-      "openNow": true,
-      "periods": [
-        {
-          "open": {
-            "day": 0,
-            "hour": 7,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 6
-            }
-          },
-          "close": {
-            "day": 0,
-            "hour": 14,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 6
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 1,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 8,
-              "day": 31
-            }
-          },
-          "close": {
-            "day": 1,
-            "hour": 14,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 8,
-              "day": 31
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 1,
-            "hour": 16,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 8,
-              "day": 31
-            }
-          },
-          "close": {
-            "day": 1,
-            "hour": 19,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 8,
-              "day": 31
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 2,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 1
-            }
-          },
-          "close": {
-            "day": 2,
-            "hour": 14,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 1
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 2,
-            "hour": 16,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 1
-            }
-          },
-          "close": {
-            "day": 2,
-            "hour": 19,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 1
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 3,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 2
-            }
-          },
-          "close": {
-            "day": 3,
-            "hour": 14,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 2
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 4,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 3
-            }
-          },
-          "close": {
-            "day": 4,
-            "hour": 14,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 3
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 4,
-            "hour": 16,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 3
-            }
-          },
-          "close": {
-            "day": 4,
-            "hour": 19,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 3
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 5,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 4
-            }
-          },
-          "close": {
-            "day": 5,
-            "hour": 14,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 4
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 5,
-            "hour": 16,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 4
-            }
-          },
-          "close": {
-            "day": 5,
-            "hour": 19,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 4
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 6,
-            "hour": 7,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 5
-            }
-          },
-          "close": {
-            "day": 6,
-            "hour": 14,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 5
-            }
-          }
-        },
-        {
-          "open": {
-            "day": 6,
-            "hour": 16,
-            "minute": 0,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 5
-            }
-          },
-          "close": {
-            "day": 6,
-            "hour": 19,
-            "minute": 30,
-            "date": {
-              "year": 2026,
-              "month": 9,
-              "day": 5
-            }
-          }
-        }
-      ],
-      "weekdayDescriptions": [
-        "lunedì: 07:00–14:00, 16:00–19:30",
-        "martedì: 07:00–14:00, 16:00–19:30",
-        "mercoledì: 07:00–14:30",
-        "giovedì: 07:00–14:00, 16:00–19:30",
-        "venerdì: 07:00–14:00, 16:00–19:30",
-        "sabato: 07:00–14:00, 16:00–19:30",
-        "domenica: 07:30–14:30"
-      ],
-      "nextCloseTime": "2026-08-31T12:00:00Z"
-    }
+    "specialOpeningHours": null
   },
-  "lastFetched": "2026-08-31T08:40:36.039Z",
+  "lastFetched": "2026-09-01T07:50:28.751Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -488,7 +184,7 @@
       "rating": 5,
       "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
       "relative_time_description": "un anno fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba5",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba6",
       "time": 1755891944,
       "language": "it"
     }
