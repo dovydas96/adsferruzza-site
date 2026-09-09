@@ -3,10 +3,10 @@
     "name": "AD Sferruzza Pasticceria",
     "place_id": "ChIJMfJik-07FxMRjvcULlZm3M8",
     "rating": 4.9,
-    "user_ratings_total": 72,
+    "user_ratings_total": 73,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -56,16 +56,6 @@
           "open": {
             "day": 2,
             "time": "1600"
-          }
-        },
-        {
-          "close": {
-            "day": 3,
-            "time": "1430"
-          },
-          "open": {
-            "day": 3,
-            "time": "0700"
           }
         },
         {
@@ -132,7 +122,7 @@
       "weekday_text": [
         "lunedì: 07:00–14:00, 16:00–19:30",
         "martedì: 07:00–14:00, 16:00–19:30",
-        "mercoledì: 07:00–14:30",
+        "mercoledì: Chiuso",
         "giovedì: 07:00–14:00, 16:00–19:30",
         "venerdì: 07:00–14:00, 16:00–19:30",
         "sabato: 07:00–14:00, 16:00–19:30",
@@ -141,7 +131,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-09-08T07:15:45.133Z",
+  "lastFetched": "2026-09-09T07:24:18.899Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
