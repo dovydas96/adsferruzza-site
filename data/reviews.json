@@ -6,7 +6,7 @@
     "user_ratings_total": 78,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -131,7 +131,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-09-29T08:34:14.801Z",
+  "lastFetched": "2026-09-30T08:36:31.649Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
