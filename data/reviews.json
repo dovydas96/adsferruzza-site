@@ -6,7 +6,7 @@
     "user_ratings_total": 86,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -131,7 +131,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-10-20T07:37:05.986Z",
+  "lastFetched": "2026-10-21T07:41:38.073Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -155,7 +155,7 @@
       "author_name": "michela comba",
       "rating": 5,
       "text": "In questa pasticceria c'è l'imbarazzo della scelta per sfogliati e dolci tipici siciliani. Qualità eccellente dei prodotti e gusto incredibile. Abbiamo provato un croissant doppia cottura e una brioche: buonissimi e generosamente ripieni di crema uno al cioccolato e l'altro nocciole. Torneremo sicuramente per provare altre brioches, cornetti e biscotti e magari anche una delle splendide torte in vetrina.",
-      "relative_time_description": "5 mesi fa",
+      "relative_time_description": "6 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUOfi3hW6GkhIrS5oM2mMNtulOOhPYO_pMfN7MsvkxlxX5esIiK=s128-c0x00000000-cc-rp-mo",
       "time": 1776961976,
       "language": "it"
