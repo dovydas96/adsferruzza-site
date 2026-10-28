@@ -6,7 +6,7 @@
     "user_ratings_total": 87,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -131,7 +131,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-10-27T07:54:51.411Z",
+  "lastFetched": "2026-10-28T08:36:24.158Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -140,15 +140,6 @@
       "relative_time_description": "8 mesi fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWh2s-Ne2Bx1zwWywJdeJEL8WyMXTChZnbFDrec_gUIsVEICq0V=s128-c0x00000000-cc-rp-mo",
       "time": 1770891168,
-      "language": "it"
-    },
-    {
-      "author_name": "Sergio Fullone",
-      "rating": 5,
-      "text": "Cordialità professionalità e cura del dettaglio. Tra le varie prelibatezze ,ciò che mi ha lasciato senza parole “i diamantini al cioccolato con sale di Mothia” e il cartoccio con la ricotta all’interno. Super consigliato , con prezzi corretti  per la qualità e servizio offerto dallo staff AD Sferruzza",
-      "relative_time_description": "4 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWq5e1ThNSAyxHYDNypCEIH181tHRC0B_HUJPf9yg7RS2IpIR8z=s128-c0x00000000-cc-rp-mo",
-      "time": 1780611326,
       "language": "it"
     },
     {
@@ -176,6 +167,15 @@
       "relative_time_description": "un anno fa",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba6",
       "time": 1755891944,
+      "language": "it"
+    },
+    {
+      "author_name": "Lorena Guzzio",
+      "rating": 5,
+      "text": "Vi consiglio tantissimo di passare da qui ed assaggiare le loro specialità. Prodotti di altissima qualità e speciali. Trovate tantissime cose buonissime dai dolci, alla rosticceria, al pane e ai biscotti. Se cervo qualità oltre alla bontà siete nel posto giusto",
+      "relative_time_description": "4 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJFKao98ZvIn7Jcd4zSHYwTjC17-5g9DB6-QARGa8XrijdXbQ=s128-c0x00000000-cc-rp-mo",
+      "time": 1780609333,
       "language": "it"
     }
   ]
