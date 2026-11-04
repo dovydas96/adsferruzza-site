@@ -6,7 +6,7 @@
     "user_ratings_total": 86,
     "url": "https://maps.google.com/?cid=14977958981053773710",
     "regularOpeningHours": {
-      "open_now": true,
+      "open_now": false,
       "periods": [
         {
           "close": {
@@ -131,7 +131,7 @@
     },
     "specialOpeningHours": null
   },
-  "lastFetched": "2026-11-03T09:35:33.815Z",
+  "lastFetched": "2026-11-04T09:18:08.688Z",
   "reviews": [
     {
       "author_name": "Nene Tsuchida",
@@ -143,12 +143,12 @@
       "language": "it"
     },
     {
-      "author_name": "Sergio Fullone",
+      "author_name": "Rodolfo Valentino",
       "rating": 5,
-      "text": "Cordialità professionalità e cura del dettaglio. Tra le varie prelibatezze ,ciò che mi ha lasciato senza parole “i diamantini al cioccolato con sale di Mothia” e il cartoccio con la ricotta all’interno. Super consigliato , con prezzi corretti  per la qualità e servizio offerto dallo staff AD Sferruzza",
-      "relative_time_description": "5 mesi fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWq5e1ThNSAyxHYDNypCEIH181tHRC0B_HUJPf9yg7RS2IpIR8z=s128-c0x00000000-cc-rp-mo",
-      "time": 1780611326,
+      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
+      "relative_time_description": "un anno fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba6",
+      "time": 1755891944,
       "language": "it"
     },
     {
@@ -161,12 +161,12 @@
       "language": "it"
     },
     {
-      "author_name": "Rodolfo Valentino",
-      "rating": 5,
-      "text": "Fantastica pasticceria-panificio a Cefalù. Prodotti di primissima qualità: abbiamo provato le pizzette rotonde (anche in versione sfincione), le arancine, pezzi di rosticceria, pane e ovviamente...dolci (una cassata freschissima e una torta al cioccolato meravigliosa). Tutto davvero buonissimo. Ho dimenticato di fare foto, quindi inserisco solo questa del pain au chocolat, anch'esso buonissimo. Certo i prezzi sono abbastanza alti, ma a Cefalù soprattutto quest'anno sembra di essere a Dubai.",
-      "relative_time_description": "un anno fa",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWbAA2jpIyUuXCGBOm7E5C0BUXzvZ9q9fA6bAHf_iY4Hoz9n5E61g=s128-c0x00000000-cc-rp-mo-ba6",
-      "time": 1755891944,
+      "author_name": "Raffaella Mendola",
+      "rating": 1,
+      "text": "Stamattina mi sono recata in questo panificio per acquistare mezzo kilo di pane, al momento di pagare €3,70 mi sono altamente stupita perché un pane di farina di semola a quasi 8€ al kilo è eccessivo ed improponibile.\nL ho fatto notare all'addetta alla vendita la quale ha risposto con atteggiamento indispettito e scortese fino al punto da dirle basta.\nÈ assurdo sia il costo che l'atteggiamento della commessa.\nÈ stata la mia prima volta che sono entrata in questo esercizio commerciale e sarà anche l ultima",
+      "relative_time_description": "5 mesi fa",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLKp2tw5Xo9vpU4WvXjD6uWHrS6DNvIqqWzUCDkYkR6Elif3UZn=s128-c0x00000000-cc-rp-mo",
+      "time": 1780398436,
       "language": "it"
     },
     {
